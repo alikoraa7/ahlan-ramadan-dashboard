@@ -15,170 +15,63 @@
 
 <style>
 
-/* =====================================================
-   RESET
-===================================================== */
-
-*,
-*::before,
-*::after{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+/* RESET */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 
 :root{
-
-    /* base surfaces */
-    --bg:#08090b;
-    --bg-2:#0b0c0f;
-
-    --sidebar:#0b0c0e;
-    --card:#121317;
-    --card-2:#16171c;
-    --card-3:#1a1b21;
-
-    /* gold accent family */
-    --gold:#c9a054;
-    --gold-light:#ecd08a;
-    --gold-dark:#8f7130;
-    --gold-soft:rgba(201,160,84,.12);
-
-    /* text */
-    --text:#f3f0ea;
-    --muted:#8d8f97;
-    --muted-2:#5c5e66;
-
-    /* lines */
-    --border:rgba(255,255,255,.07);
-    --border-2:rgba(255,255,255,.1);
-    --border-gold:rgba(201,160,84,.28);
-
-    /* state colors */
-    --success:#5fcb93;
-    --success-bg:rgba(95,203,147,.1);
-    --danger:#e2685f;
-    --danger-bg:rgba(226,104,95,.1);
-    --info:#6fa3ef;
-    --info-bg:rgba(111,163,239,.1);
-
-    /* geometry */
-    --r-sm:9px;
-    --r-md:13px;
-    --r-lg:18px;
-    --r-xl:24px;
-
+    --bg:#08090b;--bg-2:#0b0c0f;
+    --sidebar:#0b0c0e;--card:#121317;--card-2:#16171c;--card-3:#1a1b21;
+    --gold:#c9a054;--gold-light:#ecd08a;--gold-dark:#8f7130;--gold-soft:rgba(201,160,84,.12);
+    --text:#f3f0ea;--muted:#8d8f97;--muted-2:#5c5e66;
+    --border:rgba(255,255,255,.07);--border-2:rgba(255,255,255,.1);--border-gold:rgba(201,160,84,.28);
+    --success:#5fcb93;--success-bg:rgba(95,203,147,.1);
+    --danger:#e2685f;--danger-bg:rgba(226,104,95,.1);
+    --info:#6fa3ef;--info-bg:rgba(111,163,239,.1);
+    --r-sm:9px;--r-md:13px;--r-lg:18px;--r-xl:24px;
     --shadow-1:0 10px 28px rgba(0,0,0,.28);
     --shadow-2:0 22px 55px rgba(0,0,0,.42);
     --shadow-gold:0 14px 34px rgba(201,160,84,.14);
-
     --ease:cubic-bezier(.4,0,.2,1);
 }
 
-html{
-    scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
-
     font-family:"Cairo",Tahoma,Arial,sans-serif;
-
     background:
     radial-gradient(circle at 18% -5%, rgba(201,160,84,.075), transparent 32%),
     radial-gradient(circle at 88% 14%, rgba(201,160,84,.04), transparent 28%),
     var(--bg);
-
     color:var(--text);
-
     font-size:15px;
-
     font-weight:500;
-
     line-height:1.7;
-
     min-height:100vh;
-
     -webkit-font-smoothing:antialiased;
 }
 
-button,
-input,
-textarea,
-select{
-    font-family:inherit;
-    font-weight:600;
-    color:inherit;
-}
+button,input,textarea,select{font-family:inherit;font-weight:600;color:inherit;}
+button{outline:none;}
+h1,h2,h3,h4{font-weight:800;}
+p,span,label,td,th{font-weight:500;}
 
-button{
-    outline:none;
-}
-
-h1,h2,h3,h4{
-    font-weight:800;
-}
-
-p,span,label,td,th{
-    font-weight:500;
-}
-
-:focus-visible{
-    outline:2px solid var(--gold);
-    outline-offset:2px;
-    border-radius:6px;
-}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px;}
 
 @media (prefers-reduced-motion:reduce){
-    *,*::before,*::after{
-        animation-duration:.001ms !important;
-        transition-duration:.001ms !important;
-    }
+    *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important;}
 }
 
+/* SCROLLBAR */
+::-webkit-scrollbar{width:7px;height:7px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:#2a2b30;border-radius:20px;}
+::-webkit-scrollbar-thumb:hover{background:var(--gold-dark);}
 
-/* =====================================================
-   SCROLLBAR
-===================================================== */
-
-::-webkit-scrollbar{
-    width:7px;
-    height:7px;
-}
-
-::-webkit-scrollbar-track{
-    background:transparent;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#2a2b30;
-    border-radius:20px;
-}
-
-::-webkit-scrollbar-thumb:hover{
-    background:var(--gold-dark);
-}
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
+/* LOGIN */
 .login-screen{
-
-    min-height:100vh;
-    min-height:100dvh;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    padding:24px;
-
-    position:relative;
-
-    overflow:hidden;
-
+    min-height:100vh;min-height:100dvh;
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;position:relative;overflow:hidden;
     background:
     radial-gradient(circle at 50% -8%, rgba(201,160,84,.16), transparent 40%),
     radial-gradient(circle at 8% 96%, rgba(201,160,84,.05), transparent 32%),
@@ -186,2302 +79,508 @@ p,span,label,td,th{
 }
 
 .login-screen::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background-image:
-    radial-gradient(circle, rgba(201,160,84,.09) 1px, transparent 1.3px);
-
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle, rgba(201,160,84,.09) 1px, transparent 1.3px);
     background-size:34px 34px;
-
     -webkit-mask-image:radial-gradient(circle at 50% 30%, black, transparent 62%);
-
     mask-image:radial-gradient(circle at 50% 30%, black, transparent 62%);
-
-    opacity:.55;
-
-    pointer-events:none;
+    opacity:.55;pointer-events:none;
 }
 
 .login-box{
-
     width:min(430px,100%);
-
     padding:44px 38px 36px;
-
-    background:
-    linear-gradient(155deg, rgba(255,255,255,.045), rgba(255,255,255,.012) 60%);
-
+    background:linear-gradient(155deg, rgba(255,255,255,.045), rgba(255,255,255,.012) 60%);
     border:1px solid var(--border-gold);
-
     border-radius:var(--r-xl);
-
     text-align:center;
-
     box-shadow:var(--shadow-2), inset 0 1px 0 rgba(255,255,255,.05);
-
-    position:relative;
-
-    overflow:hidden;
-
-    z-index:1;
+    position:relative;overflow:hidden;z-index:1;
 }
 
 .login-box::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:220px;
-    height:220px;
-
-    top:-130px;
-    right:-100px;
-
+    content:"";position:absolute;width:220px;height:220px;top:-130px;right:-100px;
     border-radius:50%;
-
     background:radial-gradient(circle, rgba(201,160,84,.18), transparent 70%);
-
     pointer-events:none;
 }
 
 .login-icon{
-
-    width:70px;
-    height:70px;
-
-    margin:0 auto 22px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
+    width:70px;height:70px;margin:0 auto 22px;
+    display:flex;align-items:center;justify-content:center;
     border-radius:20px;
-
     background:linear-gradient(150deg, rgba(201,160,84,.22), rgba(201,160,84,.05));
-
     border:1px solid var(--border-gold);
-
     font-size:32px;
-
     box-shadow:0 16px 34px rgba(0,0,0,.35);
 }
 
-.login-box h1{
+.login-box h1{color:var(--gold-light);font-size:27px;letter-spacing:-.2px;margin-bottom:7px;}
+.login-box p{color:var(--muted);font-size:13.5px;margin-bottom:30px;}
+.login-form{text-align:right;}
+.login-label{display:block;color:#d7d5cf;font-size:12.5px;margin-bottom:8px;}
+.login-group{margin-bottom:15px;}
+.login-error{color:var(--danger);font-size:12.5px;margin-top:14px;min-height:18px;}
 
-    color:var(--gold-light);
-
-    font-size:27px;
-
-    letter-spacing:-.2px;
-
-    margin-bottom:7px;
-}
-
-.login-box p{
-
-    color:var(--muted);
-
-    font-size:13.5px;
-
-    margin-bottom:30px;
-}
-
-.login-form{
-    text-align:right;
-}
-
-.login-label{
-
-    display:block;
-
-    color:#d7d5cf;
-
-    font-size:12.5px;
-
-    margin-bottom:8px;
-}
-
-.login-group{
-    margin-bottom:15px;
-}
-
-.login-error{
-
-    color:var(--danger);
-
-    font-size:12.5px;
-
-    margin-top:14px;
-
-    min-height:18px;
-}
-
-
-/* =====================================================
-   INPUT
-===================================================== */
-
+/* INPUT */
 .input{
-
-    width:100%;
-
-    padding:13px 16px;
-
+    width:100%;padding:13px 16px;
     background:rgba(0,0,0,.32);
-
     border:1px solid #29292d;
-
     border-radius:var(--r-md);
-
-    color:var(--text);
-
-    outline:none;
-
-    font-size:14.5px;
-
+    color:var(--text);outline:none;font-size:14.5px;
     transition:border-color .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
-
     direction:rtl;
 }
+.input::placeholder{color:#57585f;font-weight:500;}
+.input:hover{border-color:#3a3a40;}
+.input:focus{border-color:var(--gold);background:#0d0d10;box-shadow:0 0 0 4px var(--gold-soft);}
+textarea.input{min-height:130px;resize:vertical;line-height:1.9;}
 
-.input::placeholder{
-    color:#57585f;
-    font-weight:500;
-}
-
-.input:hover{
-    border-color:#3a3a40;
-}
-
-.input:focus{
-
-    border-color:var(--gold);
-
-    background:#0d0d10;
-
-    box-shadow:0 0 0 4px var(--gold-soft);
-}
-
-textarea.input{
-
-    min-height:130px;
-
-    resize:vertical;
-
-    line-height:1.9;
-}
-
-
-/* =====================================================
-   GOLD BUTTON
-===================================================== */
-
+/* GOLD BUTTON */
 .gold-btn{
-
-    width:100%;
-
-    margin-top:8px;
-
-    padding:13px 18px;
-
-    border:0;
-
-    border-radius:var(--r-md);
-
-    cursor:pointer;
-
-    font-size:14.5px;
-
-    font-weight:700;
-
-    color:#191305;
-
+    width:100%;margin-top:8px;padding:13px 18px;border:0;
+    border-radius:var(--r-md);cursor:pointer;
+    font-size:14.5px;font-weight:700;color:#191305;
     background:linear-gradient(135deg, var(--gold-light), var(--gold));
-
     box-shadow:var(--shadow-gold);
-
     transition:transform .18s var(--ease), box-shadow .18s var(--ease), filter .18s var(--ease);
 }
+.gold-btn:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(201,160,84,.2);filter:brightness(1.04);}
+.gold-btn:active{transform:translateY(0);}
+.gold-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
 
-.gold-btn:hover{
+/* DASHBOARD */
+.dashboard{display:none;}
+.dashboard.active{display:flex;}
 
-    transform:translateY(-2px);
-
-    box-shadow:0 18px 38px rgba(201,160,84,.2);
-
-    filter:brightness(1.04);
-}
-
-.gold-btn:active{
-    transform:translateY(0);
-}
-
-.gold-btn:disabled{
-
-    opacity:.5;
-
-    cursor:not-allowed;
-
-    transform:none;
-    box-shadow:none;
-}
-
-
-/* =====================================================
-   DASHBOARD
-===================================================== */
-
-.dashboard{
-    display:none;
-}
-
-.dashboard.active{
-    display:flex;
-}
-
-
-/* =====================================================
-   SIDEBAR
-===================================================== */
-
+/* SIDEBAR */
 .sidebar{
-
-    width:264px;
-
-    min-height:100vh;
-    min-height:100dvh;
-
-    position:fixed;
-
-    right:0;
-    top:0;
-
-    padding:18px 12px;
-
+    width:264px;min-height:100vh;min-height:100dvh;
+    position:fixed;right:0;top:0;padding:18px 12px;
     background:linear-gradient(180deg, #0d0e11 0%, #08090b 100%);
-
     border-left:1px solid var(--border);
-
     z-index:100;
-
     transition:transform .32s var(--ease);
 }
-
-.sidebar-inner{
-    position:sticky;
-    top:18px;
-}
-
-.logo{
-
-    padding:14px 14px 20px;
-
-    margin-bottom:10px;
-
-    border-bottom:1px solid var(--border);
-}
-
-.logo-main{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:11px;
-
-    color:var(--gold-light);
-
-    font-size:19px;
-
-    font-weight:800;
-}
-
+.sidebar-inner{position:sticky;top:18px;}
+.logo{padding:14px 14px 20px;margin-bottom:10px;border-bottom:1px solid var(--border);}
+.logo-main{display:flex;align-items:center;gap:11px;color:var(--gold-light);font-size:19px;font-weight:800;}
 .logo-icon{
-
-    width:38px;
-    height:38px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:11px;
-
-    background:var(--gold-soft);
-
-    border:1px solid var(--border-gold);
-
-    font-size:19px;
+    width:38px;height:38px;display:flex;align-items:center;justify-content:center;
+    border-radius:11px;background:var(--gold-soft);border:1px solid var(--border-gold);font-size:19px;
 }
+.logo small{display:block;color:var(--muted-2);font-size:11px;font-weight:500;margin-top:5px;padding-right:49px;}
 
-.logo small{
-
-    display:block;
-
-    color:var(--muted-2);
-
-    font-size:11px;
-
-    font-weight:500;
-
-    margin-top:5px;
-
-    padding-right:49px;
-}
-
-
-/* =====================================================
-   SIDEBAR MENU
-===================================================== */
-
-.menu{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:4px;
-
-    padding-top:10px;
-}
-
-.menu-label{
-
-    color:#48494f;
-
-    font-size:10.5px;
-
-    font-weight:700;
-
-    padding:14px 14px 7px;
-
-    letter-spacing:.4px;
-}
-
+/* SIDEBAR MENU */
+.menu{display:flex;flex-direction:column;gap:4px;padding-top:10px;}
+.menu-label{color:#48494f;font-size:10.5px;font-weight:700;padding:14px 14px 7px;letter-spacing:.4px;}
 .menu-item{
-
-    width:100%;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:11px;
-
-    border:1px solid transparent;
-
-    background:transparent;
-
-    color:#a9a9ae;
-
-    padding:11px 13px;
-
-    border-radius:var(--r-md);
-
-    cursor:pointer;
-
-    text-align:right;
-
-    font-size:13.5px;
-
-    font-weight:600;
-
+    width:100%;display:flex;align-items:center;gap:11px;
+    border:1px solid transparent;background:transparent;color:#a9a9ae;
+    padding:11px 13px;border-radius:var(--r-md);cursor:pointer;text-align:right;
+    font-size:13.5px;font-weight:600;
     transition:background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
-
     position:relative;
 }
-
-.menu-item:hover{
-
-    color:#fff;
-
-    background:rgba(255,255,255,.035);
-
-    border-color:var(--border);
-}
-
+.menu-item:hover{color:#fff;background:rgba(255,255,255,.035);border-color:var(--border);}
 .menu-item.active{
-
     color:var(--gold-light);
-
     background:linear-gradient(90deg, rgba(201,160,84,.03), rgba(201,160,84,.13));
-
     border-color:var(--border-gold);
 }
-
 .menu-item.active::before{
-
-    content:"";
-
-    position:absolute;
-
-    right:-12px;
-
-    width:3px;
-
-    height:22px;
-
-    border-radius:5px 0 0 5px;
-
-    background:var(--gold);
+    content:"";position:absolute;right:-12px;width:3px;height:22px;
+    border-radius:5px 0 0 5px;background:var(--gold);
 }
-
 .menu-icon{
-
-    width:34px;
-    height:34px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:9px;
-
-    background:rgba(255,255,255,.035);
-
-    font-size:15.5px;
-
-    flex-shrink:0;
-
+    width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+    border-radius:9px;background:rgba(255,255,255,.035);font-size:15.5px;flex-shrink:0;
     transition:background .2s var(--ease);
 }
+.menu-item.active .menu-icon{background:var(--gold-soft);}
 
-.menu-item.active .menu-icon{
-    background:var(--gold-soft);
-}
+/* MAIN */
+.main{width:100%;min-height:100vh;margin-right:264px;}
 
-
-/* =====================================================
-   MAIN
-===================================================== */
-
-.main{
-
-    width:100%;
-
-    min-height:100vh;
-
-    margin-right:264px;
-}
-
-
-/* =====================================================
-   TOPBAR
-===================================================== */
-
+/* TOPBAR */
 .topbar{
-
-    height:76px;
-
-    padding:0 32px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
+    height:76px;padding:0 32px;
+    display:flex;align-items:center;justify-content:space-between;
     background:rgba(8,9,11,.86);
-
     border-bottom:1px solid var(--border);
-
-    position:sticky;
-
-    top:0;
-
-    z-index:50;
-
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
 }
-
-.topbar-right{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-}
-
-.page-title{
-
-    font-size:18.5px;
-
-    font-weight:800;
-
-    color:#fff;
-
-    letter-spacing:-.1px;
-}
-
-.page-subtitle{
-
-    color:#5a5b61;
-
-    font-size:11px;
-
-    font-weight:500;
-
-    margin-top:2px;
-}
-
-.admin{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:11px;
-
-    color:#ddd;
-
-    font-size:13px;
-}
-
-.admin-info{
-    text-align:left;
-}
-
-.admin-info span:first-child{
-    font-size:13px;
-    font-weight:700;
-    color:#e6e4de;
-}
-
-.admin-role{
-
-    color:#57585e;
-
-    font-size:10.5px;
-
-    font-weight:500;
-
-    display:block;
-
-    margin-top:1px;
-}
-
+.topbar-right{display:flex;align-items:center;gap:14px;}
+.page-title{font-size:18.5px;font-weight:800;color:#fff;letter-spacing:-.1px;}
+.page-subtitle{color:#5a5b61;font-size:11px;font-weight:500;margin-top:2px;}
+.admin{display:flex;align-items:center;gap:11px;color:#ddd;font-size:13px;}
+.admin-info{text-align:left;}
+.admin-info span:first-child{font-size:13px;font-weight:700;color:#e6e4de;}
+.admin-role{color:#57585e;font-size:10.5px;font-weight:500;display:block;margin-top:1px;}
 .admin-avatar{
-
-    width:38px;
-    height:38px;
-
-    border-radius:12px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
+    width:38px;height:38px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
     background:linear-gradient(150deg, var(--gold-light), var(--gold));
-
-    color:#1b1503;
-
-    font-size:14px;
-
-    font-weight:800;
-
+    color:#1b1503;font-size:14px;font-weight:800;
     box-shadow:0 6px 16px rgba(201,160,84,.16);
 }
-
 .logout-btn{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:6px;
-
-    border:1px solid rgba(226,104,95,.18);
-
-    background:var(--danger-bg);
-
-    color:var(--danger);
-
-    padding:9px 13px;
-
-    border-radius:var(--r-sm);
-
-    cursor:pointer;
-
+    display:flex;align-items:center;gap:6px;
+    border:1px solid rgba(226,104,95,.18);background:var(--danger-bg);color:var(--danger);
+    padding:9px 13px;border-radius:var(--r-sm);cursor:pointer;
     transition:background .2s var(--ease), border-color .2s var(--ease);
-
-    font-size:12px;
-
-    font-weight:700;
+    font-size:12px;font-weight:700;
 }
+.logout-btn:hover{background:rgba(226,104,95,.14);border-color:rgba(226,104,95,.3);}
 
-.logout-btn:hover{
+/* CONTENT */
+.content{padding:30px 32px 55px;max-width:1400px;}
 
-    background:rgba(226,104,95,.14);
+/* PAGE */
+.page{display:none;}
+.page.active{display:block;animation:pageShow .28s var(--ease);}
+@keyframes pageShow{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 
-    border-color:rgba(226,104,95,.3);
-}
-
-
-/* =====================================================
-   CONTENT
-===================================================== */
-
-.content{
-
-    padding:30px 32px 55px;
-
-    max-width:1400px;
-}
-
-
-/* =====================================================
-   PAGE
-===================================================== */
-
-.page{
-    display:none;
-}
-
-.page.active{
-    display:block;
-
-    animation:pageShow .28s var(--ease);
-}
-
-@keyframes pageShow{
-
-    from{
-        opacity:0;
-        transform:translateY(6px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-
-/* =====================================================
-   WELCOME
-===================================================== */
-
+/* WELCOME */
 .welcome{
-
-    margin-bottom:24px;
-
-    padding:26px 30px;
-
-    border-radius:var(--r-lg);
-
+    margin-bottom:24px;padding:26px 30px;border-radius:var(--r-lg);
     background:linear-gradient(120deg, rgba(201,160,84,.1), rgba(255,255,255,.02));
-
-    border:1px solid var(--border-gold);
-
-    position:relative;
-
-    overflow:hidden;
+    border:1px solid var(--border-gold);position:relative;overflow:hidden;
 }
-
 .welcome::after{
-
-    content:"🌙";
-
-    position:absolute;
-
-    left:28px;
-    top:50%;
-
-    transform:translateY(-50%) rotate(-8deg);
-
-    font-size:68px;
-
-    opacity:.09;
+    content:"🌙";position:absolute;left:28px;top:50%;
+    transform:translateY(-50%) rotate(-8deg);font-size:68px;opacity:.09;
 }
+.welcome h2{font-size:21px;color:var(--gold-light);margin-bottom:4px;letter-spacing:-.1px;}
+.welcome p{color:#87878d;font-size:13px;font-weight:500;}
 
-.welcome h2{
-
-    font-size:21px;
-
-    color:var(--gold-light);
-
-    margin-bottom:4px;
-
-    letter-spacing:-.1px;
-}
-
-.welcome p{
-
-    color:#87878d;
-
-    font-size:13px;
-
-    font-weight:500;
-}
-
-
-/* =====================================================
-   STATS
-===================================================== */
-
-.stats{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,minmax(0,1fr));
-
-    gap:16px;
-
-    margin-bottom:24px;
-
-    max-width:860px;
-}
-
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:24px;max-width:860px;}
 .stat-card{
-
-    position:relative;
-
-    padding:22px;
-
-    min-height:138px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:space-between;
-
+    position:relative;padding:22px;min-height:138px;
+    display:flex;flex-direction:column;justify-content:space-between;
     background:linear-gradient(150deg, var(--card-2), var(--card));
-
-    border:1px solid var(--border);
-
-    border-radius:var(--r-lg);
-
-    overflow:hidden;
-
+    border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;
     transition:transform .22s var(--ease), border-color .22s var(--ease), box-shadow .22s var(--ease);
 }
-
 .stat-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:110px;
-    height:110px;
-
-    left:-45px;
-    bottom:-60px;
-
-    border-radius:50%;
-
-    background:radial-gradient(circle, rgba(201,160,84,.14), transparent 70%);
+    content:"";position:absolute;width:110px;height:110px;left:-45px;bottom:-60px;
+    border-radius:50%;background:radial-gradient(circle, rgba(201,160,84,.14), transparent 70%);
 }
-
-.stat-card:hover{
-
-    transform:translateY(-3px);
-
-    border-color:var(--border-gold);
-
-    box-shadow:var(--shadow-1);
-}
-
-.stat-top{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    margin-bottom:12px;
-}
-
+.stat-card:hover{transform:translateY(-3px);border-color:var(--border-gold);box-shadow:var(--shadow-1);}
+.stat-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
 .stat-icon{
-
-    width:42px;
-    height:42px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:var(--r-md);
-
-    background:var(--gold-soft);
-
-    border:1px solid var(--border-gold);
-
-    font-size:19px;
+    width:42px;height:42px;display:flex;align-items:center;justify-content:center;
+    border-radius:var(--r-md);background:var(--gold-soft);border:1px solid var(--border-gold);font-size:19px;
 }
+.stat-label{color:#75767c;font-size:11px;font-weight:600;}
+.stat-number{color:var(--gold-light);font-size:30px;font-weight:800;line-height:1;margin-bottom:5px;letter-spacing:-.5px;}
+.stat-title{color:#b8b8bd;font-size:12.5px;font-weight:600;}
 
-.stat-label{
+/* SECTION HEADER */
+.section-heading{margin-bottom:18px;}
+.section-heading h1{font-size:23px;color:#fff;margin-bottom:4px;letter-spacing:-.2px;}
+.section-heading p{color:#5f6066;font-size:12.5px;font-weight:500;}
 
-    color:#75767c;
-
-    font-size:11px;
-
-    font-weight:600;
-}
-
-.stat-number{
-
-    color:var(--gold-light);
-
-    font-size:30px;
-
-    font-weight:800;
-
-    line-height:1;
-
-    margin-bottom:5px;
-
-    letter-spacing:-.5px;
-}
-
-.stat-title{
-
-    color:#b8b8bd;
-
-    font-size:12.5px;
-
-    font-weight:600;
-}
-
-
-/* =====================================================
-   SECTION HEADER
-===================================================== */
-
-.section-heading{
-    margin-bottom:18px;
-}
-
-.section-heading h1{
-
-    font-size:23px;
-
-    color:#fff;
-
-    margin-bottom:4px;
-
-    letter-spacing:-.2px;
-}
-
-.section-heading p{
-
-    color:#5f6066;
-
-    font-size:12.5px;
-
-    font-weight:500;
-}
-
-
-/* =====================================================
-   PANEL
-===================================================== */
-
+/* PANEL */
 .panel{
-
     background:linear-gradient(155deg, rgba(255,255,255,.03), rgba(255,255,255,.012));
-
-    border:1px solid var(--border);
-
-    border-radius:var(--r-lg);
-
-    padding:24px;
-
-    margin-bottom:20px;
-
-    box-shadow:0 12px 32px rgba(0,0,0,.18);
+    border:1px solid var(--border);border-radius:var(--r-lg);
+    padding:24px;margin-bottom:20px;box-shadow:0 12px 32px rgba(0,0,0,.18);
 }
-
-.panel-header{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:14px;
-
-    margin-bottom:20px;
-
-    flex-wrap:wrap;
-}
-
-.panel-title-area h2{
-
-    font-size:17px;
-
-    color:#fff;
-
-    margin-bottom:3px;
-}
-
-.panel-title-area p{
-
-    color:#5f6066;
-
-    font-size:11.5px;
-
-    font-weight:500;
-}
-
+.panel-header{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px;flex-wrap:wrap;}
+.panel-title-area h2{font-size:17px;color:#fff;margin-bottom:3px;}
+.panel-title-area p{color:#5f6066;font-size:11.5px;font-weight:500;}
 .add-btn{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:6px;
-
+    display:inline-flex;align-items:center;gap:6px;
     border:1px solid var(--border-gold);
-
     background:linear-gradient(135deg, var(--gold-light), var(--gold));
-
-    color:#191305;
-
-    padding:10px 16px;
-
-    border-radius:var(--r-sm);
-
-    cursor:pointer;
-
-    font-size:13px;
-
-    font-weight:700;
-
-    white-space:nowrap;
-
+    color:#191305;padding:10px 16px;border-radius:var(--r-sm);cursor:pointer;
+    font-size:13px;font-weight:700;white-space:nowrap;
     transition:transform .18s var(--ease), filter .18s var(--ease);
-
     box-shadow:0 8px 20px rgba(201,160,84,.1);
 }
+.add-btn:hover{transform:translateY(-2px);filter:brightness(1.04);}
+.add-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
 
-.add-btn:hover{
-
-    transform:translateY(-2px);
-
-    filter:brightness(1.04);
-}
-
-
-/* =====================================================
-   TABLE (desktop)
-===================================================== */
-
-.table-container{
-
-    overflow:auto;
-
-    border-radius:var(--r-md);
-
-    border:1px solid var(--border);
-}
-
-.table{
-
-    width:100%;
-
-    min-width:620px;
-
-    border-collapse:collapse;
-}
-
+/* TABLE (desktop) */
+.table-container{overflow:auto;border-radius:var(--r-md);border:1px solid var(--border);}
+.table{width:100%;min-width:620px;border-collapse:collapse;}
 .table th{
-
-    text-align:right;
-
-    padding:13px 16px;
-
-    color:#75767c;
-
-    background:#0d0e10;
-
-    border-bottom:1px solid var(--border);
-
-    font-size:11px;
-
-    font-weight:700;
+    text-align:right;padding:13px 16px;color:#75767c;background:#0d0e10;
+    border-bottom:1px solid var(--border);font-size:11px;font-weight:700;
 }
-
 .table td{
-
-    padding:13px 16px;
-
-    color:#d9d9dc;
-
-    border-bottom:1px solid var(--border);
-
-    font-size:13px;
-
-    font-weight:500;
-
-    background:rgba(255,255,255,.006);
-
-    vertical-align:middle;
+    padding:13px 16px;color:#d9d9dc;border-bottom:1px solid var(--border);
+    font-size:13px;font-weight:500;background:rgba(255,255,255,.006);vertical-align:middle;
 }
-
-.table tbody tr{
-    transition:background .18s var(--ease);
-}
-
-.table tbody tr:hover td{
-    background:rgba(201,160,84,.03);
-}
-
-.table tr:last-child td{
-    border-bottom:0;
-}
-
-.series-cell{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-}
-
+.table tbody tr{transition:background .18s var(--ease);}
+.table tbody tr:hover td{background:rgba(201,160,84,.03);}
+.table tr:last-child td{border-bottom:0;}
+.series-cell{display:flex;align-items:center;gap:12px;}
 .poster-small{
-
-    width:44px;
-    height:58px;
-
-    object-fit:cover;
-
-    border-radius:var(--r-sm);
-
-    border:1px solid var(--border-2);
-
-    background:#0a0a0c;
-
-    flex-shrink:0;
+    width:44px;height:58px;object-fit:cover;border-radius:var(--r-sm);
+    border:1px solid var(--border-2);background:#0a0a0c;flex-shrink:0;
 }
-
-.series-name{
-
-    color:#fff;
-
-    font-size:13.5px;
-
-    font-weight:700;
-}
-
-.series-meta{
-
-    display:block;
-
-    color:#57585e;
-
-    font-size:10px;
-
-    font-weight:500;
-
-    margin-top:2px;
-}
-
+.series-name{color:#fff;font-size:13.5px;font-weight:700;}
+.series-meta{display:block;color:#57585e;font-size:10px;font-weight:500;margin-top:2px;}
 .count-badge{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:4px;
-
-    padding:5px 10px;
-
-    border-radius:var(--r-sm);
-
-    color:var(--gold-light);
-
-    background:var(--gold-soft);
-
-    border:1px solid var(--border-gold);
-
-    font-size:11px;
-
-    font-weight:700;
-
-    white-space:nowrap;
+    display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:var(--r-sm);
+    color:var(--gold-light);background:var(--gold-soft);border:1px solid var(--border-gold);
+    font-size:11px;font-weight:700;white-space:nowrap;
 }
 
-
-/* =====================================================
-   ACTION BUTTONS
-===================================================== */
-
-.actions{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:6px;
-
-    flex-wrap:wrap;
-}
-
+/* ACTION BUTTONS */
+.actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
 .action-btn{
-
-    border:1px solid transparent;
-
-    padding:7px 11px;
-
-    border-radius:var(--r-sm);
-
-    cursor:pointer;
-
-    font-size:11px;
-
-    font-weight:700;
-
-    transition:transform .16s var(--ease), filter .16s var(--ease);
-
-    white-space:nowrap;
+    border:1px solid transparent;padding:7px 11px;border-radius:var(--r-sm);cursor:pointer;
+    font-size:11px;font-weight:700;
+    transition:transform .16s var(--ease), filter .16s var(--ease);white-space:nowrap;
 }
+.action-btn:hover{transform:translateY(-1px);filter:brightness(1.15);}
+.manage-btn{color:var(--gold-light);background:var(--gold-soft);border-color:var(--border-gold);}
+.edit-btn{color:var(--info);background:var(--info-bg);border-color:rgba(111,163,239,.2);}
+.delete-btn{color:var(--danger);background:var(--danger-bg);border-color:rgba(226,104,95,.2);}
 
-.action-btn:hover{
-
-    transform:translateY(-1px);
-
-    filter:brightness(1.15);
-}
-
-.manage-btn{
-
-    color:var(--gold-light);
-
-    background:var(--gold-soft);
-
-    border-color:var(--border-gold);
-}
-
-.edit-btn{
-
-    color:var(--info);
-
-    background:var(--info-bg);
-
-    border-color:rgba(111,163,239,.2);
-}
-
-.delete-btn{
-
-    color:var(--danger);
-
-    background:var(--danger-bg);
-
-    border-color:rgba(226,104,95,.2);
-}
-
-
-/* =====================================================
-   EMPTY STATE
-===================================================== */
-
-.empty-state{
-
-    text-align:center;
-
-    padding:52px 20px;
-
-    color:var(--muted-2);
-}
-
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:52px 20px;color:var(--muted-2);}
 .empty-icon{
-
-    width:54px;
-    height:54px;
-
-    margin:0 auto 12px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:var(--r-md);
-
-    background:rgba(255,255,255,.025);
-
-    border:1px solid var(--border);
-
-    font-size:22px;
+    width:54px;height:54px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;
+    border-radius:var(--r-md);background:rgba(255,255,255,.025);border:1px solid var(--border);font-size:22px;
 }
+.empty-state h3{color:#8a8b91;font-size:14px;font-weight:700;margin-bottom:3px;}
+.empty-state p{color:var(--muted-2);font-size:11.5px;font-weight:500;}
 
-.empty-state h3{
-
-    color:#8a8b91;
-
-    font-size:14px;
-
-    font-weight:700;
-
-    margin-bottom:3px;
-}
-
-.empty-state p{
-
-    color:var(--muted-2);
-
-    font-size:11.5px;
-
-    font-weight:500;
-}
-
-
-/* =====================================================
-   MODAL
-===================================================== */
-
+/* MODAL */
 .modal{
-
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    padding:20px;
-
+    display:none;position:fixed;inset:0;padding:20px;
     background:rgba(0,0,0,.76);
-
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
-
-    align-items:center;
-
-    justify-content:center;
-
-    z-index:500;
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    align-items:center;justify-content:center;z-index:500;
 }
-
-.modal.active{
-    display:flex;
-}
-
+.modal.active{display:flex;}
 .modal-box{
-
-    width:min(760px,100%);
-
-    max-height:92vh;
-
-    overflow:auto;
-
+    width:min(760px,100%);max-height:92vh;overflow:auto;
     background:linear-gradient(155deg, #171820, #101116);
-
-    border:1px solid var(--border-gold);
-
-    border-radius:var(--r-xl);
-
-    padding:26px;
-
-    box-shadow:var(--shadow-2);
-
-    animation:modalShow .22s var(--ease);
+    border:1px solid var(--border-gold);border-radius:var(--r-xl);
+    padding:26px;box-shadow:var(--shadow-2);animation:modalShow .22s var(--ease);
 }
-
 @keyframes modalShow{
-
-    from{
-        opacity:0;
-        transform:translateY(14px) scale(.97);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
+    from{opacity:0;transform:translateY(14px) scale(.97);}
+    to{opacity:1;transform:translateY(0) scale(1);}
 }
-
 .modal-title{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:14px;
-
-    margin-bottom:24px;
-
-    padding-bottom:16px;
-
-    border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border);
 }
-
-.modal-title h2{
-
-    font-size:18px;
-
-    color:#fff;
-
-    font-weight:800;
-}
-
-.modal-title-sub{
-
-    color:var(--muted-2);
-
-    font-size:10.5px;
-
-    font-weight:500;
-
-    margin-top:3px;
-}
-
+.modal-title h2{font-size:18px;color:#fff;font-weight:800;}
+.modal-title-sub{color:var(--muted-2);font-size:10.5px;font-weight:500;margin-top:3px;}
 .close{
-
-    width:34px;
-    height:34px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:var(--r-sm);
-
-    background:#202127;
-
-    color:#7c7d84;
-
-    font-size:22px;
-
-    cursor:pointer;
-
-    transition:color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease);
-
-    flex-shrink:0;
+    width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+    border-radius:var(--r-sm);background:#202127;color:#7c7d84;font-size:22px;cursor:pointer;
+    transition:color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease);flex-shrink:0;
 }
+.close:hover{color:#fff;background:#282933;transform:rotate(90deg);}
 
-.close:hover{
+/* FORM */
+.form-group{margin-bottom:17px;}
+.form-group label{display:block;color:#d7d5cf;font-size:12px;font-weight:600;margin-bottom:8px;}
+.form-hint{display:block;color:var(--muted-2);font-size:10.5px;font-weight:500;margin-top:7px;line-height:1.6;}
 
-    color:#fff;
-
-    background:#282933;
-
-    transform:rotate(90deg);
-}
-
-
-/* =====================================================
-   FORM
-===================================================== */
-
-.form-group{
-    margin-bottom:17px;
-}
-
-.form-group label{
-
-    display:block;
-
-    color:#d7d5cf;
-
-    font-size:12px;
-
-    font-weight:600;
-
-    margin-bottom:8px;
-}
-
-.form-hint{
-
-    display:block;
-
-    color:var(--muted-2);
-
-    font-size:10.5px;
-
-    font-weight:500;
-
-    margin-top:7px;
-
-    line-height:1.6;
-}
-
-
-/* =====================================================
-   MODAL FOOTER
-===================================================== */
-
-.modal-footer{
-
-    display:flex;
-
-    gap:9px;
-
-    margin-top:6px;
-}
-
-.modal-footer .gold-btn{
-    margin-top:0;
-}
-
+/* MODAL FOOTER */
+.modal-footer{display:flex;gap:9px;margin-top:6px;}
+.modal-footer .gold-btn{margin-top:0;}
 .cancel-btn{
-
-    width:100%;
-
-    padding:12px;
-
-    border-radius:var(--r-md);
-
-    border:1px solid var(--border-2);
-
-    background:#1b1c22;
-
-    color:#a4a4aa;
-
-    cursor:pointer;
-
-    font-size:13.5px;
-
-    font-weight:700;
-
+    width:100%;padding:12px;border-radius:var(--r-md);
+    border:1px solid var(--border-2);background:#1b1c22;color:#a4a4aa;cursor:pointer;
+    font-size:13.5px;font-weight:700;
     transition:background .2s var(--ease), color .2s var(--ease);
 }
+.cancel-btn:hover{background:#212228;color:#fff;}
 
-.cancel-btn:hover{
-
-    background:#212228;
-
-    color:#fff;
-}
-
-
-/* =====================================================
-   SERIES INFO
-===================================================== */
-
+/* SERIES INFO */
 .modal-series-info{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    padding:15px;
-
-    margin-bottom:20px;
-
-    background:rgba(255,255,255,.025);
-
-    border:1px solid var(--border);
-
-    border-radius:var(--r-md);
+    display:flex;align-items:center;gap:14px;padding:15px;margin-bottom:20px;
+    background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:var(--r-md);
 }
-
 .modal-series-info img{
-
-    width:54px;
-    height:70px;
-
-    object-fit:cover;
-
-    border-radius:var(--r-sm);
-
-    border:1px solid var(--border-2);
-
-    flex-shrink:0;
+    width:54px;height:70px;object-fit:cover;border-radius:var(--r-sm);
+    border:1px solid var(--border-2);flex-shrink:0;
 }
+.modal-series-info h3{font-size:16px;color:#fff;font-weight:700;margin-bottom:3px;}
+.modal-series-info p{color:var(--gold);font-size:11px;font-weight:600;}
 
-.modal-series-info h3{
-
-    font-size:16px;
-
-    color:#fff;
-
-    font-weight:700;
-
-    margin-bottom:3px;
-}
-
-.modal-series-info p{
-
-    color:var(--gold);
-
-    font-size:11px;
-
-    font-weight:600;
-}
-
-
-/* =====================================================
-   EPISODE ADD BOX
-===================================================== */
-
+/* EPISODE ADD BOX */
 .episode-add-box{
-
     padding:19px;
-
     background:linear-gradient(155deg, rgba(201,160,84,.05), rgba(255,255,255,.012));
-
-    border:1px solid var(--border-gold);
-
-    border-radius:var(--r-lg);
-
-    margin-bottom:22px;
+    border:1px solid var(--border-gold);border-radius:var(--r-lg);margin-bottom:22px;
 }
-
-.episode-add-title{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    color:var(--gold-light);
-
-    font-size:14.5px;
-
-    font-weight:700;
-
-    margin-bottom:16px;
-}
-
-.episode-add-title::before{
-
-    content:"";
-
-    width:6px;
-    height:6px;
-
-    border-radius:50%;
-
-    background:var(--gold);
-}
-
+.episode-add-title{display:flex;align-items:center;gap:8px;color:var(--gold-light);font-size:14.5px;font-weight:700;margin-bottom:16px;}
+.episode-add-title::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);}
 .episodes-list-title{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:14px;
-
-    margin-bottom:12px;
-
-    padding-bottom:12px;
-
-    border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--border);
 }
+.episodes-list-title h3{color:#eee;font-size:14.5px;font-weight:700;}
+.episodes-count{color:var(--muted-2);font-size:11px;font-weight:600;}
 
-.episodes-list-title h3{
-
-    color:#eee;
-
-    font-size:14.5px;
-
-    font-weight:700;
-}
-
-.episodes-count{
-
-    color:var(--muted-2);
-
-    font-size:11px;
-
-    font-weight:600;
-}
-
-
-/* =====================================================
-   EPISODE CARD
-===================================================== */
-
+/* EPISODE CARD */
 .episode-card{
-
-    padding:14px;
-
-    margin-bottom:8px;
-
-    background:var(--card-2);
-
-    border:1px solid var(--border);
-
-    border-radius:var(--r-md);
-
+    padding:14px;margin-bottom:8px;background:var(--card-2);
+    border:1px solid var(--border);border-radius:var(--r-md);
     transition:border-color .2s var(--ease), background .2s var(--ease);
 }
-
-.episode-card:hover{
-
-    border-color:var(--border-gold);
-
-    background:var(--card-3);
-}
-
-.episode-card-top{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:10px;
-
-    margin-bottom:9px;
-}
-
-.episode-name{
-
-    color:#eee;
-
-    font-size:13px;
-
-    font-weight:600;
-}
-
+.episode-card:hover{border-color:var(--border-gold);background:var(--card-3);}
+.episode-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px;}
+.episode-name{color:#eee;font-size:13px;font-weight:600;}
 .episode-number{
-
-    color:var(--gold);
-
-    font-size:10px;
-
-    font-weight:700;
-
-    white-space:nowrap;
-
-    padding:4px 8px;
-
-    border-radius:6px;
-
-    background:var(--gold-soft);
+    color:var(--gold);font-size:10px;font-weight:700;white-space:nowrap;
+    padding:4px 8px;border-radius:6px;background:var(--gold-soft);
 }
-
 .episode-link{
-
-    display:block;
-
-    color:#93b8ec;
-
-    background:#0a0a0d;
-
-    border:1px solid var(--border);
-
-    padding:9px 11px;
-
-    border-radius:var(--r-sm);
-
-    word-break:break-all;
-
-    text-decoration:none;
-
-    font-size:11px;
-
-    direction:ltr;
-
-    text-align:left;
-
-    margin-bottom:10px;
-
-    font-weight:600;
-
+    display:block;color:#93b8ec;background:#0a0a0d;border:1px solid var(--border);
+    padding:9px 11px;border-radius:var(--r-sm);word-break:break-all;text-decoration:none;
+    font-size:11px;direction:ltr;text-align:left;margin-bottom:10px;font-weight:600;
     transition:color .2s var(--ease), border-color .2s var(--ease);
 }
-
-.episode-link:hover{
-
-    color:#c1d9f7;
-
-    border-color:rgba(111,163,239,.22);
-}
-
-.episode-actions{
-
-    display:flex;
-
-    gap:6px;
-}
-
-.episode-actions .action-btn{
-    margin:0;
-}
-
+.episode-link:hover{color:#c1d9f7;border-color:rgba(111,163,239,.22);}
+.episode-actions{display:flex;gap:6px;}
+.episode-actions .action-btn{margin:0;}
 .empty-episodes{
-
-    text-align:center;
-
-    padding:32px 20px;
-
-    color:var(--muted-2);
-
-    background:#0d0e10;
-
-    border-radius:var(--r-md);
-
-    border:1px dashed var(--border-2);
-
-    font-size:12px;
-
-    font-weight:500;
+    text-align:center;padding:32px 20px;color:var(--muted-2);background:#0d0e10;
+    border-radius:var(--r-md);border:1px dashed var(--border-2);font-size:12px;font-weight:500;
 }
 
-
-/* =====================================================
-   ACCESS CODE
-===================================================== */
-
-.access-card{
-    max-width:620px;
-}
-
+/* ACCESS CODE */
+.access-card{max-width:620px;}
 .security-box{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    padding:16px;
-
-    margin-bottom:20px;
-
-    border-radius:var(--r-md);
-
-    background:var(--gold-soft);
-
-    border:1px solid var(--border-gold);
+    display:flex;align-items:center;gap:14px;padding:16px;margin-bottom:20px;
+    border-radius:var(--r-md);background:var(--gold-soft);border:1px solid var(--border-gold);
 }
-
 .security-icon{
-
-    width:41px;
-    height:41px;
-
-    flex-shrink:0;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:var(--r-sm);
-
-    background:rgba(201,160,84,.15);
-
-    font-size:18px;
+    width:41px;height:41px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+    border-radius:var(--r-sm);background:rgba(201,160,84,.15);font-size:18px;
 }
+.security-box h3{color:#e2e0da;font-size:13px;font-weight:700;margin-bottom:2px;}
+.security-box p{color:#666770;font-size:10.5px;font-weight:500;}
 
-.security-box h3{
-
-    color:#e2e0da;
-
-    font-size:13px;
-
-    font-weight:700;
-
-    margin-bottom:2px;
+/* UPDATE (new) */
+.switch-row{
+    display:flex;align-items:center;gap:10px;cursor:pointer;
+    color:#d7d5cf;font-size:13px;font-weight:600;
 }
+.switch-row input{width:18px;height:18px;accent-color:var(--gold);cursor:pointer;}
 
-.security-box p{
-
-    color:#666770;
-
-    font-size:10.5px;
-
-    font-weight:500;
-}
-
-
-/* =====================================================
-   TOAST
-===================================================== */
-
+/* TOAST */
 .toast-container{
-
-    position:fixed;
-
-    left:24px;
-
-    bottom:24px;
-
-    z-index:9999;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:9px;
-
-    pointer-events:none;
+    position:fixed;left:24px;bottom:24px;z-index:9999;
+    display:flex;flex-direction:column;gap:9px;pointer-events:none;
 }
-
 .toast{
-
-    min-width:270px;
-
-    max-width:380px;
-
-    padding:13px 15px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:11px;
-
-    background:rgba(19,20,24,.97);
-
-    border:1px solid var(--border-2);
-
-    border-radius:var(--r-md);
-
-    box-shadow:var(--shadow-2);
-
-    animation:toastIn .25s var(--ease);
-
-    pointer-events:auto;
+    min-width:270px;max-width:380px;padding:13px 15px;
+    display:flex;align-items:center;gap:11px;
+    background:rgba(19,20,24,.97);border:1px solid var(--border-2);border-radius:var(--r-md);
+    box-shadow:var(--shadow-2);animation:toastIn .25s var(--ease);pointer-events:auto;
 }
-
-.toast.success{
-    border-color:rgba(95,203,147,.24);
-}
-
-.toast.error{
-    border-color:rgba(226,104,95,.24);
-}
-
+.toast.success{border-color:rgba(95,203,147,.24);}
+.toast.error{border-color:rgba(226,104,95,.24);}
 .toast-icon{
-
-    width:28px;
-    height:28px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:8px;
-
-    background:var(--success-bg);
-
-    color:var(--success);
-
-    flex-shrink:0;
-
-    font-weight:800;
+    width:28px;height:28px;display:flex;align-items:center;justify-content:center;
+    border-radius:8px;background:var(--success-bg);color:var(--success);flex-shrink:0;font-weight:800;
 }
+.toast.error .toast-icon{color:var(--danger);background:var(--danger-bg);}
+.toast-text{color:#dddde0;font-size:12px;font-weight:600;line-height:1.5;}
+@keyframes toastIn{from{opacity:0;transform:translateX(-16px);}to{opacity:1;transform:translateX(0);}}
+@keyframes toastOut{from{opacity:1;transform:translateX(0);}to{opacity:0;transform:translateX(-16px);}}
 
-.toast.error .toast-icon{
-
-    color:var(--danger);
-
-    background:var(--danger-bg);
-}
-
-.toast-text{
-
-    color:#dddde0;
-
-    font-size:12px;
-
-    font-weight:600;
-
-    line-height:1.5;
-}
-
-@keyframes toastIn{
-
-    from{
-        opacity:0;
-        transform:translateX(-16px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
-}
-
-@keyframes toastOut{
-
-    from{
-        opacity:1;
-        transform:translateX(0);
-    }
-
-    to{
-        opacity:0;
-        transform:translateX(-16px);
-    }
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
+/* MOBILE */
 .mobile-menu{
-
-    display:none;
-
-    align-items:center;
-    justify-content:center;
-
-    width:38px;
-    height:38px;
-
-    background:var(--card-2);
-
-    border:1px solid var(--border);
-
-    color:var(--gold);
-
-    border-radius:var(--r-sm);
-
-    font-size:18px;
-
-    cursor:pointer;
+    display:none;align-items:center;justify-content:center;width:38px;height:38px;
+    background:var(--card-2);border:1px solid var(--border);color:var(--gold);
+    border-radius:var(--r-sm);font-size:18px;cursor:pointer;
 }
-
-.mobile-overlay{
-
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(0,0,0,.55);
-
-    z-index:90;
-}
-
-.mobile-overlay.active{
-    display:block;
-}
-
+.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:90;}
+.mobile-overlay.active{display:block;}
 
 @media(max-width:850px){
-
-    .sidebar{
-
-        transform:translateX(110%);
-
-        box-shadow:-20px 0 55px rgba(0,0,0,.4);
-    }
-
-    .sidebar.open{
-        transform:translateX(0);
-    }
-
-    .main{
-        margin-right:0;
-    }
-
-    .mobile-menu{
-        display:flex;
-    }
-
-    .topbar{
-
-        padding:0 18px;
-
-        gap:12px;
-    }
-
-    .topbar-right{
-        gap:10px;
-    }
-
-    .content{
-        padding:22px 18px 40px;
-    }
-
-    .stats{
-        grid-template-columns:1fr;
-        max-width:none;
-    }
-
-    .page-title{
-        font-size:16.5px;
-    }
-
-    .admin-info{
-        display:none;
-    }
-
+    .sidebar{transform:translateX(110%);box-shadow:-20px 0 55px rgba(0,0,0,.4);}
+    .sidebar.open{transform:translateX(0);}
+    .main{margin-right:0;}
+    .mobile-menu{display:flex;}
+    .topbar{padding:0 18px;gap:12px;}
+    .topbar-right{gap:10px;}
+    .content{padding:22px 18px 40px;}
+    .stats{grid-template-columns:1fr;max-width:none;}
+    .page-title{font-size:16.5px;}
+    .admin-info{display:none;}
 }
 
-
-/* ---------- responsive "card" tables on small screens ---------- */
-
+/* responsive "card" tables on small screens */
 @media(max-width:700px){
-
-    .table-container{
-        border:none;
-        overflow:visible;
-    }
-
-    .table{
-        min-width:0;
-    }
-
-    .table thead{
-        display:none;
-    }
-
-    .table,
-    .table tbody,
+    .table-container{border:none;overflow:visible;}
+    .table{min-width:0;}
+    .table thead{display:none;}
+    .table,.table tbody,.table tr{display:block;width:100%;}
     .table tr{
-        display:block;
-        width:100%;
+        margin-bottom:12px;background:var(--card-2);border:1px solid var(--border);
+        border-radius:var(--r-md);overflow:hidden;
     }
-
-    .table tr{
-
-        margin-bottom:12px;
-
-        background:var(--card-2);
-
-        border:1px solid var(--border);
-
-        border-radius:var(--r-md);
-
-        overflow:hidden;
-    }
-
-    .table tr:hover td{
-        background:transparent;
-    }
-
+    .table tr:hover td{background:transparent;}
     .table td{
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:space-between;
-
-        gap:12px;
-
-        border-bottom:1px solid var(--border);
-
-        background:transparent;
+        display:flex;align-items:center;justify-content:space-between;gap:12px;
+        border-bottom:1px solid var(--border);background:transparent;
     }
-
-    .table tr td:last-child{
-        border-bottom:0;
-    }
-
+    .table tr td:last-child{border-bottom:0;}
     .table td::before{
-
-        content:attr(data-label);
-
-        flex-shrink:0;
-
-        color:var(--muted-2);
-
-        font-size:10.5px;
-
-        font-weight:700;
+        content:attr(data-label);flex-shrink:0;color:var(--muted-2);font-size:10.5px;font-weight:700;
     }
-
-    .table td.cell-main{
-
-        flex-direction:column;
-
-        align-items:stretch;
-
-        background:rgba(255,255,255,.015);
-    }
-
-    .table td.cell-main::before{
-        display:none;
-    }
-
-    .table td.cell-actions{
-
-        flex-direction:column;
-
-        align-items:stretch;
-    }
-
-    .table td.cell-actions::before{
-        display:none;
-    }
-
-    .table td.cell-actions .actions{
-        justify-content:flex-start;
-    }
-
-    .empty-state{
-        padding:44px 16px;
-    }
-
+    .table td.cell-main{flex-direction:column;align-items:stretch;background:rgba(255,255,255,.015);}
+    .table td.cell-main::before{display:none;}
+    .table td.cell-actions{flex-direction:column;align-items:stretch;}
+    .table td.cell-actions::before{display:none;}
+    .table td.cell-actions .actions{justify-content:flex-start;}
+    .empty-state{padding:44px 16px;}
 }
-
 
 @media(max-width:600px){
-
-    .login-box{
-        padding:34px 22px 26px;
-    }
-
-    .login-icon{
-        width:64px;
-        height:64px;
-        font-size:28px;
-    }
-
-    .login-box h1{
-        font-size:24px;
-    }
-
-    .content{
-        padding:18px 14px 32px;
-    }
-
-    .panel{
-        padding:17px 14px;
-        border-radius:var(--r-md);
-    }
-
-    .panel-header{
-        align-items:flex-start;
-    }
-
-    .panel-title-area h2{
-        font-size:15.5px;
-    }
-
-    .add-btn{
-        padding:9px 12px;
-        font-size:11.5px;
-    }
-
-    .welcome{
-        padding:20px 18px;
-    }
-
-    .welcome h2{
-        font-size:18px;
-    }
-
-    .welcome::after{
-        display:none;
-    }
-
-    .topbar{
-        height:66px;
-        padding:0 14px;
-    }
-
-    .admin-avatar{
-        width:35px;
-        height:35px;
-    }
-
-    .logout-btn{
-        padding:7px 9px;
-        font-size:10px;
-    }
-
-    .logout-btn span{
-        display:none;
-    }
-
-    .modal{
-        padding:10px;
-    }
-
-    .modal-box{
-        padding:19px 15px;
-        max-height:95vh;
-        border-radius:var(--r-lg);
-    }
-
-    .modal-title h2{
-        font-size:16px;
-    }
-
-    .modal-footer{
-        flex-direction:column;
-    }
-
-    .modal-series-info{
-        padding:12px;
-    }
-
-    .episode-add-box{
-        padding:15px;
-    }
-
-    .episode-card-top{
-        align-items:flex-start;
-        flex-direction:column;
-    }
-
-    .toast-container{
-
-        left:12px;
-        right:12px;
-
-        bottom:12px;
-    }
-
-    .toast{
-
-        min-width:0;
-
-        width:100%;
-
-        max-width:none;
-    }
-
+    .login-box{padding:34px 22px 26px;}
+    .login-icon{width:64px;height:64px;font-size:28px;}
+    .login-box h1{font-size:24px;}
+    .content{padding:18px 14px 32px;}
+    .panel{padding:17px 14px;border-radius:var(--r-md);}
+    .panel-header{align-items:flex-start;}
+    .panel-title-area h2{font-size:15.5px;}
+    .add-btn{padding:9px 12px;font-size:11.5px;}
+    .welcome{padding:20px 18px;}
+    .welcome h2{font-size:18px;}
+    .welcome::after{display:none;}
+    .topbar{height:66px;padding:0 14px;}
+    .admin-avatar{width:35px;height:35px;}
+    .logout-btn{padding:7px 9px;font-size:10px;}
+    .logout-btn span{display:none;}
+    .modal{padding:10px;}
+    .modal-box{padding:19px 15px;max-height:95vh;border-radius:var(--r-lg);}
+    .modal-title h2{font-size:16px;}
+    .modal-footer{flex-direction:column;}
+    .modal-series-info{padding:12px;}
+    .episode-add-box{padding:15px;}
+    .episode-card-top{align-items:flex-start;flex-direction:column;}
+    .toast-container{left:12px;right:12px;bottom:12px;}
+    .toast{min-width:0;width:100%;max-width:none;}
 }
-
 
 @media(max-width:400px){
-
-    .page-title{
-        font-size:15px;
-    }
-
-    .admin{
-        gap:6px;
-    }
-
-    .stats{
-        gap:12px;
-    }
-
-    .stat-card{
-        padding:18px;
-    }
-
+    .page-title{font-size:15px;}
+    .admin{gap:6px;}
+    .stats{gap:12px;}
+    .stat-card{padding:18px;}
 }
 
-
-/* =====================================================
-   HIDDEN
-===================================================== */
-
-.hidden{
-    display:none !important;
-}
+/* HIDDEN */
+.hidden{display:none !important;}
 
 </style>
 
@@ -2499,27 +598,16 @@ textarea.input{
 
     <div class="login-box">
 
-        <div class="login-icon">
-            🌙
-        </div>
+        <div class="login-icon">🌙</div>
 
-        <h1>
-            أهلاً رمضان
-        </h1>
+        <h1>أهلاً رمضان</h1>
 
-        <p>
-            تسجيل الدخول إلى لوحة التحكم
-        </p>
-
+        <p>تسجيل الدخول إلى لوحة التحكم</p>
 
         <div class="login-form">
 
             <div class="login-group">
-
-                <label class="login-label">
-                    البريد الإلكتروني
-                </label>
-
+                <label class="login-label">البريد الإلكتروني</label>
                 <input
                 class="input"
                 id="adminEmail"
@@ -2527,16 +615,10 @@ textarea.input{
                 value=""
                 placeholder="أدخل البريد الإلكتروني"
                 autocomplete="username">
-
             </div>
 
-
             <div class="login-group">
-
-                <label class="login-label">
-                    كلمة المرور
-                </label>
-
+                <label class="login-label">كلمة المرور</label>
                 <input
                 class="input"
                 id="adminPassword"
@@ -2544,26 +626,18 @@ textarea.input{
                 value=""
                 placeholder="أدخل كلمة المرور"
                 autocomplete="current-password">
-
             </div>
-
 
             <button
             class="gold-btn"
             id="loginButton"
             onclick="login()">
-
                 دخول لوحة التحكم
-
             </button>
 
         </div>
 
-
-        <div
-        class="login-error"
-        id="loginError">
-        </div>
+        <div class="login-error" id="loginError"></div>
 
     </div>
 
@@ -2577,9 +651,7 @@ textarea.input{
 <div class="dashboard" id="dashboard">
 
 
-<!-- =====================================================
-     SIDEBAR
-===================================================== -->
+<!-- SIDEBAR -->
 
 <aside class="sidebar" id="sidebar">
 
@@ -2588,101 +660,51 @@ textarea.input{
         <div class="logo">
 
             <div class="logo-main">
-
-                <div class="logo-icon">
-                    🌙
-                </div>
-
+                <div class="logo-icon">🌙</div>
                 لوحة التحكم
-
             </div>
 
-            <small>
-                أهلاً رمضان
-            </small>
+            <small>أهلاً رمضان</small>
 
         </div>
 
-
         <div class="menu">
 
-            <div class="menu-label">
-                الرئيسية
-            </div>
+            <div class="menu-label">الرئيسية</div>
 
-
-            <button
-            class="menu-item active"
-            onclick="openPage('home',this)">
-
-                <span class="menu-icon">
-                    🏠
-                </span>
-
+            <button class="menu-item active" onclick="openPage('home',this)">
+                <span class="menu-icon">🏠</span>
                 لوحة التحكم
-
             </button>
 
+            <div class="menu-label">المحتوى</div>
 
-            <div class="menu-label">
-                المحتوى
-            </div>
-
-
-            <button
-            class="menu-item"
-            onclick="openPage('series',this)">
-
-                <span class="menu-icon">
-                    📺
-                </span>
-
+            <button class="menu-item" onclick="openPage('series',this)">
+                <span class="menu-icon">📺</span>
                 المسلسلات
-
             </button>
 
-
-            <button
-            class="menu-item"
-            onclick="openPage('episodes',this)">
-
-                <span class="menu-icon">
-                    🎬
-                </span>
-
+            <button class="menu-item" onclick="openPage('episodes',this)">
+                <span class="menu-icon">🎬</span>
                 الحلقات
-
             </button>
 
-
-            <button
-            class="menu-item"
-            onclick="openPage('duas',this)">
-
-                <span class="menu-icon">
-                    🤲
-                </span>
-
+            <button class="menu-item" onclick="openPage('duas',this)">
+                <span class="menu-icon">🤲</span>
                 الأدعية
-
             </button>
 
+            <div class="menu-label">الإعدادات</div>
 
-            <div class="menu-label">
-                الإعدادات
-            </div>
-
-
-            <button
-            class="menu-item"
-            onclick="openPage('access',this)">
-
-                <span class="menu-icon">
-                    🔐
-                </span>
-
+            <button class="menu-item" onclick="openPage('access',this)">
+                <span class="menu-icon">🔐</span>
                 كود الدخول
+            </button>
 
+            <!-- NEW: UPDATE -->
+            <button class="menu-item" onclick="openPage('update',this)">
+                <span class="menu-icon">🔄</span>
+                التحديث
             </button>
 
         </div>
@@ -2691,80 +713,37 @@ textarea.input{
 
 </aside>
 
-
-<div
-class="mobile-overlay"
-id="mobileOverlay"
-onclick="toggleMenu()">
-</div>
+<div class="mobile-overlay" id="mobileOverlay" onclick="toggleMenu()"></div>
 
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
+<!-- MAIN -->
 
 <div class="main">
 
-
 <header class="topbar">
-
 
     <div class="topbar-right">
 
-        <button
-        class="mobile-menu"
-        onclick="toggleMenu()">
-
-            ☰
-
-        </button>
-
+        <button class="mobile-menu" onclick="toggleMenu()">☰</button>
 
         <div>
-
-            <div
-            class="page-title"
-            id="pageTitle">
-
-                لوحة التحكم
-
-            </div>
-
-            <div class="page-subtitle">
-                إدارة محتوى التطبيق
-            </div>
-
+            <div class="page-title" id="pageTitle">لوحة التحكم</div>
+            <div class="page-subtitle">إدارة محتوى التطبيق</div>
         </div>
 
     </div>
 
-
     <div class="admin">
 
         <div class="admin-info">
-
-            <span>
-                المدير
-            </span>
-
-            <span class="admin-role">
-                مدير النظام
-            </span>
-
+            <span>المدير</span>
+            <span class="admin-role">مدير النظام</span>
         </div>
 
+        <div class="admin-avatar">A</div>
 
-        <div class="admin-avatar">
-            A
-        </div>
-
-
-        <button
-        class="logout-btn"
-        onclick="logout()">
-
+        <button class="logout-btn" onclick="logout()">
             <span>خروج</span>
-
         </button>
 
     </div>
@@ -2775,419 +754,235 @@ onclick="toggleMenu()">
 <div class="content">
 
 
-<!-- =====================================================
-     HOME
-===================================================== -->
+<!-- HOME -->
 
 <div class="page active" id="home">
 
-
     <div class="welcome">
-
-        <h2>
-            أهلاً بك في لوحة التحكم 🌙
-        </h2>
-
-        <p>
-            من هنا يمكنك إدارة محتوى تطبيق أهلاً رمضان بالكامل.
-        </p>
-
+        <h2>أهلاً بك في لوحة التحكم 🌙</h2>
+        <p>من هنا يمكنك إدارة محتوى تطبيق أهلاً رمضان بالكامل.</p>
     </div>
-
 
     <div class="stats">
 
-
         <div class="stat-card">
-
             <div class="stat-top">
-
-                <div class="stat-icon">
-                    📺
-                </div>
-
-                <span class="stat-label">
-                    المحتوى
-                </span>
-
+                <div class="stat-icon">📺</div>
+                <span class="stat-label">المحتوى</span>
             </div>
-
-
-            <div
-            class="stat-number"
-            id="seriesCount">
-
-                0
-
-            </div>
-
-
-            <div class="stat-title">
-                عدد المسلسلات
-            </div>
-
+            <div class="stat-number" id="seriesCount">0</div>
+            <div class="stat-title">عدد المسلسلات</div>
         </div>
 
-
         <div class="stat-card">
-
             <div class="stat-top">
-
-                <div class="stat-icon">
-                    🎬
-                </div>
-
-                <span class="stat-label">
-                    الحلقات
-                </span>
-
+                <div class="stat-icon">🎬</div>
+                <span class="stat-label">الحلقات</span>
             </div>
-
-
-            <div
-            class="stat-number"
-            id="episodeCount">
-
-                0
-
-            </div>
-
-
-            <div class="stat-title">
-                إجمالي الحلقات
-            </div>
-
+            <div class="stat-number" id="episodeCount">0</div>
+            <div class="stat-title">إجمالي الحلقات</div>
         </div>
-
 
     </div>
-
 
 </div>
 
 
-<!-- =====================================================
-     SERIES
-===================================================== -->
+<!-- SERIES -->
 
 <div class="page" id="series">
 
-
     <div class="section-heading">
-
-        <h1>
-            المسلسلات
-        </h1>
-
-        <p>
-            إضافة وتعديل وحذف المسلسلات الموجودة داخل التطبيق.
-        </p>
-
+        <h1>المسلسلات</h1>
+        <p>إضافة وتعديل وحذف المسلسلات الموجودة داخل التطبيق.</p>
     </div>
 
-
     <div class="panel">
-
 
         <div class="panel-header">
 
             <div class="panel-title-area">
-
-                <h2>
-                    قائمة المسلسلات
-                </h2>
-
-                <p>
-                    جميع المسلسلات المضافة إلى التطبيق
-                </p>
-
+                <h2>قائمة المسلسلات</h2>
+                <p>جميع المسلسلات المضافة إلى التطبيق</p>
             </div>
 
-
-            <button
-            class="add-btn"
-            onclick="openAddSeries()">
-
-                ＋ إضافة مسلسل
-
-            </button>
+            <button class="add-btn" onclick="openAddSeries()">＋ إضافة مسلسل</button>
 
         </div>
-
 
         <div class="table-container">
-
             <table class="table">
-
                 <thead>
-
                     <tr>
-
-                        <th>
-                            المسلسل
-                        </th>
-
-                        <th>
-                            الحلقات
-                        </th>
-
-                        <th>
-                            الإجراءات
-                        </th>
-
+                        <th>المسلسل</th>
+                        <th>الحلقات</th>
+                        <th>الإجراءات</th>
                     </tr>
-
                 </thead>
-
-
-                <tbody id="seriesTable">
-                </tbody>
-
+                <tbody id="seriesTable"></tbody>
             </table>
-
         </div>
 
-
     </div>
-
 
 </div>
 
 
-<!-- =====================================================
-     EPISODES
-===================================================== -->
+<!-- EPISODES -->
 
 <div class="page" id="episodes">
 
-
     <div class="section-heading">
-
-        <h1>
-            الحلقات
-        </h1>
-
-        <p>
-            اختر مسلسلًا لإدارة حلقاته وروابط المشاهدة.
-        </p>
-
+        <h1>الحلقات</h1>
+        <p>اختر مسلسلًا لإدارة حلقاته وروابط المشاهدة.</p>
     </div>
-
 
     <div class="panel">
 
-
         <div class="panel-header">
-
             <div class="panel-title-area">
-
-                <h2>
-                    إدارة الحلقات
-                </h2>
-
-                <p>
-                    المسلسلات المتاحة لإضافة وإدارة الحلقات
-                </p>
-
+                <h2>إدارة الحلقات</h2>
+                <p>المسلسلات المتاحة لإضافة وإدارة الحلقات</p>
             </div>
-
         </div>
-
 
         <div class="table-container">
-
             <table class="table">
-
                 <thead>
-
                     <tr>
-
-                        <th>
-                            المسلسل
-                        </th>
-
-                        <th>
-                            عدد الحلقات
-                        </th>
-
-                        <th>
-                            الإجراءات
-                        </th>
-
+                        <th>المسلسل</th>
+                        <th>عدد الحلقات</th>
+                        <th>الإجراءات</th>
                     </tr>
-
                 </thead>
-
-
-                <tbody id="episodesSeriesTable">
-                </tbody>
-
+                <tbody id="episodesSeriesTable"></tbody>
             </table>
-
         </div>
 
-
     </div>
-
 
 </div>
 
 
-<!-- =====================================================
-     DUAS
-===================================================== -->
+<!-- DUAS -->
 
 <div class="page" id="duas">
 
-
     <div class="section-heading">
-
-        <h1>
-            الأدعية
-        </h1>
-
-        <p>
-            إدارة الأدعية الظاهرة داخل تطبيق أهلاً رمضان.
-        </p>
-
+        <h1>الأدعية</h1>
+        <p>إدارة الأدعية الظاهرة داخل تطبيق أهلاً رمضان.</p>
     </div>
 
-
     <div class="panel">
-
 
         <div class="panel-header">
 
             <div class="panel-title-area">
-
-                <h2>
-                    🤲 قائمة الأدعية
-                </h2>
-
-                <p>
-                    يمكنك إضافة أو تعديل أو حذف أي دعاء.
-                </p>
-
+                <h2>🤲 قائمة الأدعية</h2>
+                <p>يمكنك إضافة أو تعديل أو حذف أي دعاء.</p>
             </div>
 
-
-            <button
-            class="add-btn"
-            onclick="openAddDua()">
-
-                ＋ إضافة دعاء
-
-            </button>
+            <button class="add-btn" onclick="openAddDua()">＋ إضافة دعاء</button>
 
         </div>
-
 
         <div class="table-container">
-
             <table class="table">
-
                 <thead>
-
                     <tr>
-
-                        <th>
-                            نص الدعاء
-                        </th>
-
-                        <th>
-                            الإجراءات
-                        </th>
-
+                        <th>نص الدعاء</th>
+                        <th>الإجراءات</th>
                     </tr>
-
                 </thead>
-
-
-                <tbody id="duasTable">
-                </tbody>
-
+                <tbody id="duasTable"></tbody>
             </table>
-
         </div>
 
-
     </div>
-
 
 </div>
 
 
-<!-- =====================================================
-     ACCESS CODE
-===================================================== -->
+<!-- ACCESS CODE -->
 
 <div class="page" id="access">
 
-
     <div class="section-heading">
-
-        <h1>
-            كود الدخول
-        </h1>
-
-        <p>
-            التحكم في كود الوصول إلى المحتوى الخاص.
-        </p>
-
+        <h1>كود الدخول</h1>
+        <p>التحكم في كود الوصول إلى المحتوى الخاص.</p>
     </div>
-
 
     <div class="panel access-card">
 
-
         <div class="security-box">
 
-            <div class="security-icon">
-                🔐
-            </div>
+            <div class="security-icon">🔐</div>
 
             <div>
-
-                <h3>
-                    كود الدخول للمحتوى الخاص
-                </h3>
-
-                <p>
-                    قم بتغيير الكود ثم احفظه ليتم تحديثه في Firebase.
-                </p>
-
+                <h3>كود الدخول للمحتوى الخاص</h3>
+                <p>قم بتغيير الكود ثم احفظه ليتم تحديثه في Firebase.</p>
             </div>
 
         </div>
 
-
         <div class="form-group">
-
-            <label>
-                كود الدخول
-            </label>
-
-            <input
-            class="input"
-            id="accessCode"
-            value="5050"
-            dir="ltr">
-
+            <label>كود الدخول</label>
+            <input class="input" id="accessCode" value="5050" dir="ltr">
         </div>
 
+        <button class="add-btn" onclick="saveAccessCode()">حفظ كود الدخول</button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     UPDATE (NEW)
+===================================================== -->
+
+<div class="page" id="update">
+
+    <div class="section-heading">
+        <h1>التحديث</h1>
+        <p>نشر شاشة تحديث ثابتة تظهر لكل مستخدمي التطبيق.</p>
+    </div>
+
+    <div class="panel access-card">
+
+        <div class="form-group">
+            <label>رابط التحديث</label>
+            <input
+            class="input"
+            id="updateUrl"
+            dir="ltr"
+            placeholder="https://play.google.com/store/apps/details?id=...">
+        </div>
+
+        <div class="form-group">
+            <label>نص التحديث</label>
+            <textarea
+            class="input"
+            id="updateText"
+            placeholder="يوجد تحديث جديد، برجاء التحديث الآن"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="switch-row">
+                <input type="checkbox" id="updateEnabled">
+                <span>تفعيل شاشة التحديث للمستخدمين</span>
+            </label>
+        </div>
 
         <button
         class="add-btn"
-        onclick="saveAccessCode()">
-
-            حفظ كود الدخول
-
+        id="updatePublishBtn"
+        onclick="saveUpdate()">
+            🚀 نشر
         </button>
 
-
     </div>
 
-
 </div>
 
 
@@ -3198,147 +993,60 @@ onclick="toggleMenu()">
 </div>
 
 
-<!-- =====================================================
-     SERIES MODAL
-===================================================== -->
+<!-- SERIES MODAL -->
 
-<div
-class="modal"
-id="seriesModal"
-onclick="closeModalOutside(event,'seriesModal')">
+<div class="modal" id="seriesModal" onclick="closeModalOutside(event,'seriesModal')">
 
-
-    <div
-    class="modal-box"
-    onclick="event.stopPropagation()">
-
+    <div class="modal-box" onclick="event.stopPropagation()">
 
         <div class="modal-title">
 
             <div>
-
-                <h2 id="seriesModalTitle">
-                    إضافة مسلسل جديد
-                </h2>
-
-                <div class="modal-title-sub">
-                    أدخل بيانات المسلسل ثم اضغط حفظ
-                </div>
-
+                <h2 id="seriesModalTitle">إضافة مسلسل جديد</h2>
+                <div class="modal-title-sub">أدخل بيانات المسلسل ثم اضغط حفظ</div>
             </div>
 
-
-            <span
-            class="close"
-            onclick="closeModal('seriesModal')">
-
-                ×
-
-            </span>
+            <span class="close" onclick="closeModal('seriesModal')">×</span>
 
         </div>
-
 
         <div class="form-group">
-
-            <label>
-                اسم المسلسل
-            </label>
-
-            <input
-            class="input"
-            id="seriesName"
-            placeholder="مثال: الحكاية الرمضانية">
-
+            <label>اسم المسلسل</label>
+            <input class="input" id="seriesName" placeholder="مثال: الحكاية الرمضانية">
         </div>
-
 
         <div class="form-group">
-
-            <label>
-                رابط صورة المسلسل
-            </label>
-
-            <input
-            class="input"
-            id="seriesImage"
-            placeholder="https://example.com/image.jpg"
-            dir="ltr">
-
-            <span class="form-hint">
-                يمكنك تركه فارغًا وسيتم استخدام صورة افتراضية.
-            </span>
-
+            <label>رابط صورة المسلسل</label>
+            <input class="input" id="seriesImage" placeholder="https://example.com/image.jpg" dir="ltr">
+            <span class="form-hint">يمكنك تركه فارغًا وسيتم استخدام صورة افتراضية.</span>
         </div>
-
 
         <div class="modal-footer">
-
-            <button
-            class="cancel-btn"
-            onclick="closeModal('seriesModal')">
-
-                إلغاء
-
-            </button>
-
-
-            <button
-            class="gold-btn"
-            onclick="saveSeries()">
-
-                حفظ المسلسل
-
-            </button>
-
+            <button class="cancel-btn" onclick="closeModal('seriesModal')">إلغاء</button>
+            <button class="gold-btn" onclick="saveSeries()">حفظ المسلسل</button>
         </div>
-
 
     </div>
 
 </div>
 
 
-<!-- =====================================================
-     EPISODES MODAL
-===================================================== -->
+<!-- EPISODES MODAL -->
 
-<div
-class="modal"
-id="manageEpisodesModal"
-onclick="closeModalOutside(event,'manageEpisodesModal')">
+<div class="modal" id="manageEpisodesModal" onclick="closeModalOutside(event,'manageEpisodesModal')">
 
-
-    <div
-    class="modal-box"
-    onclick="event.stopPropagation()">
-
+    <div class="modal-box" onclick="event.stopPropagation()">
 
         <div class="modal-title">
 
             <div>
-
-                <h2>
-                    🎬 إدارة الحلقات
-                </h2>
-
-                <div class="modal-title-sub">
-                    إضافة وتعديل روابط حلقات المسلسل
-                </div>
-
+                <h2>🎬 إدارة الحلقات</h2>
+                <div class="modal-title-sub">إضافة وتعديل روابط حلقات المسلسل</div>
             </div>
 
-
-            <span
-            class="close"
-            onclick="closeModal('manageEpisodesModal')">
-
-                ×
-
-            </span>
+            <span class="close" onclick="closeModal('manageEpisodesModal')">×</span>
 
         </div>
-
 
         <div class="modal-series-info">
 
@@ -3347,192 +1055,81 @@ onclick="closeModalOutside(event,'manageEpisodesModal')">
             src=""
             onerror="this.src='https://via.placeholder.com/300x450'">
 
-
             <div>
-
-                <h3 id="manageSeriesName">
-                    اسم المسلسل
-                </h3>
-
-                <p id="manageSeriesCount">
-                    0 حلقة
-                </p>
-
+                <h3 id="manageSeriesName">اسم المسلسل</h3>
+                <p id="manageSeriesCount">0 حلقة</p>
             </div>
 
         </div>
-
 
         <div class="episode-add-box">
 
-
-            <div class="episode-add-title">
-                إضافة حلقة جديدة
-            </div>
-
+            <div class="episode-add-title">إضافة حلقة جديدة</div>
 
             <div class="form-group">
-
-                <label>
-                    اسم الحلقة
-                </label>
-
-                <input
-                class="input"
-                id="episodeName"
-                placeholder="اتركه فارغًا للتسمية التلقائية">
-
+                <label>اسم الحلقة</label>
+                <input class="input" id="episodeName" placeholder="اتركه فارغًا للتسمية التلقائية">
                 <span class="form-hint">
                     إذا تركته فارغًا سيتم إنشاء الحلقة تلقائيًا: الحلقة 1، الحلقة 2، الحلقة 3...
                 </span>
-
             </div>
-
 
             <div class="form-group">
-
-                <label>
-                    رابط الحلقة
-                </label>
-
-                <input
-                class="input"
-                id="episodeLink"
-                placeholder="https://example.com/video.mp4"
-                dir="ltr">
-
+                <label>رابط الحلقة</label>
+                <input class="input" id="episodeLink" placeholder="https://example.com/video.mp4" dir="ltr">
             </div>
 
-
-            <button
-            class="gold-btn"
-            id="episodeSaveButton"
-            onclick="saveEpisode()">
-
-                إضافة الحلقة
-
-            </button>
-
+            <button class="gold-btn" id="episodeSaveButton" onclick="saveEpisode()">إضافة الحلقة</button>
 
         </div>
-
 
         <div class="episodes-list-title">
-
-            <h3>
-                حلقات المسلسل
-            </h3>
-
-            <span
-            class="episodes-count"
-            id="episodesListCount">
-
-                0 حلقة
-
-            </span>
-
+            <h3>حلقات المسلسل</h3>
+            <span class="episodes-count" id="episodesListCount">0 حلقة</span>
         </div>
 
-
-        <div id="manageEpisodesList">
-        </div>
-
+        <div id="manageEpisodesList"></div>
 
     </div>
 
 </div>
 
 
-<!-- =====================================================
-     DUA MODAL
-===================================================== -->
+<!-- DUA MODAL -->
 
-<div
-class="modal"
-id="duaModal"
-onclick="closeModalOutside(event,'duaModal')">
+<div class="modal" id="duaModal" onclick="closeModalOutside(event,'duaModal')">
 
-
-    <div
-    class="modal-box"
-    onclick="event.stopPropagation()">
-
+    <div class="modal-box" onclick="event.stopPropagation()">
 
         <div class="modal-title">
 
             <div>
-
-                <h2 id="duaModalTitle">
-                    إضافة دعاء
-                </h2>
-
-                <div class="modal-title-sub">
-                    أضف النص الذي سيظهر داخل التطبيق
-                </div>
-
+                <h2 id="duaModalTitle">إضافة دعاء</h2>
+                <div class="modal-title-sub">أضف النص الذي سيظهر داخل التطبيق</div>
             </div>
 
-
-            <span
-            class="close"
-            onclick="closeModal('duaModal')">
-
-                ×
-
-            </span>
+            <span class="close" onclick="closeModal('duaModal')">×</span>
 
         </div>
-
 
         <div class="form-group">
-
-            <label>
-                نص الدعاء
-            </label>
-
-            <textarea
-            class="input"
-            id="duaText"
-            placeholder="اكتب الدعاء هنا..."></textarea>
-
+            <label>نص الدعاء</label>
+            <textarea class="input" id="duaText" placeholder="اكتب الدعاء هنا..."></textarea>
         </div>
-
 
         <div class="modal-footer">
-
-            <button
-            class="cancel-btn"
-            onclick="closeModal('duaModal')">
-
-                إلغاء
-
-            </button>
-
-
-            <button
-            class="gold-btn"
-            onclick="saveDua()">
-
-                حفظ الدعاء
-
-            </button>
-
+            <button class="cancel-btn" onclick="closeModal('duaModal')">إلغاء</button>
+            <button class="gold-btn" onclick="saveDua()">حفظ الدعاء</button>
         </div>
-
 
     </div>
 
 </div>
 
 
-<!-- =====================================================
-     TOAST CONTAINER
-===================================================== -->
+<!-- TOAST CONTAINER -->
 
-<div
-class="toast-container"
-id="toastContainer">
-</div>
+<div class="toast-container" id="toastContainer"></div>
 
 
 <!-- =====================================================
@@ -3540,47 +1137,26 @@ id="toastContainer">
 ===================================================== -->
 
 <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-app-compat.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-auth-compat.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-database-compat.js"></script>
 
 
 <script>
 
-/* =====================================================
-   FIREBASE CONFIG
-===================================================== */
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
-
-    apiKey:
-    "AIzaSyBM-_c16myGfz_rpi0kFIGlP0LTCSVf554",
-
-    authDomain:
-    "ahlan-ramadan-dashboard.firebaseapp.com",
-
-    databaseURL:
-    "https://ahlan-ramadan-dashboard-default-rtdb.firebaseio.com",
-
-    projectId:
-    "ahlan-ramadan-dashboard",
-
-    storageBucket:
-    "ahlan-ramadan-dashboard.firebasestorage.app",
-
-    messagingSenderId:
-    "400642710273",
-
-    appId:
-    "1:400642710273:web:a25529a17af576f59b5900"
-
+    apiKey:"AIzaSyBM-_c16myGfz_rpi0kFIGlP0LTCSVf554",
+    authDomain:"ahlan-ramadan-dashboard.firebaseapp.com",
+    databaseURL:"https://ahlan-ramadan-dashboard-default-rtdb.firebaseio.com",
+    projectId:"ahlan-ramadan-dashboard",
+    storageBucket:"ahlan-ramadan-dashboard.firebasestorage.app",
+    messagingSenderId:"400642710273",
+    appId:"1:400642710273:web:a25529a17af576f59b5900"
 };
 
 
-/* =====================================================
-   INITIALIZE FIREBASE
-===================================================== */
+/* INITIALIZE FIREBASE */
 
 firebase.initializeApp(firebaseConfig);
 
@@ -3589,125 +1165,70 @@ const auth = firebase.auth();
 const db = firebase.database();
 
 
-/* =====================================================
-   ADMIN UID
-===================================================== */
+/* ADMIN UID */
 
-const ADMIN_UID =
-"GYyqDbHxy5egcX5ZZWeJTaMlOPG2";
+const ADMIN_UID = "GYyqDbHxy5egcX5ZZWeJTaMlOPG2";
 
 
-/* =====================================================
-   DATA
-===================================================== */
+/* DATA */
 
 let series = [];
-
 let duas = [];
-
 let selectedSeriesId = null;
-
 let editingSeriesId = null;
-
 let editingEpisodeIndex = null;
-
 let editingDuaIndex = null;
 
 
-/* =====================================================
-   DEFAULT DATA
-===================================================== */
+/* DEFAULT DATA */
 
 const defaultSeries = [
-
     {
         id:1,
-
         name:"الحكاية الرمضانية",
-
-        image:
-        "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=300&q=80",
-
+        image:"https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=300&q=80",
         episodes:[]
     },
-
     {
         id:2,
-
         name:"ليالي رمضان",
-
-        image:
-        "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=300&q=80",
-
+        image:"https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&w=300&q=80",
         episodes:[]
     }
-
 ];
-
 
 const defaultDuas = [
-
     "اللهم بلغنا رمضان وأعنا فيه على الصيام والقيام.",
-
     "اللهم إنك عفو تحب العفو فاعف عنا.",
-
     "اللهم اجعل رمضان شهر رحمة ومغفرة."
-
 ];
 
 
-/* =====================================================
-   TOAST
-===================================================== */
+/* TOAST */
 
 function showToast(message,type="success"){
 
-    const container =
-    document.getElementById(
-        "toastContainer"
-    );
+    const container = document.getElementById("toastContainer");
 
+    const toast = document.createElement("div");
 
-    const toast =
-    document.createElement("div");
+    toast.className = "toast " + type;
 
-
-    toast.className =
-    "toast " + type;
-
-
-    const icon =
-    type === "error"
-    ? "!"
-    : "✓";
-
+    const icon = type === "error" ? "!" : "✓";
 
     toast.innerHTML = `
-
-        <div class="toast-icon">
-            ${icon}
-        </div>
-
-        <div class="toast-text">
-            ${escapeHTML(message)}
-        </div>
-
+        <div class="toast-icon">${icon}</div>
+        <div class="toast-text">${escapeHTML(message)}</div>
     `;
-
 
     container.appendChild(toast);
 
-
     setTimeout(function(){
 
-        toast.style.animation =
-        "toastOut .25s ease forwards";
-
+        toast.style.animation = "toastOut .25s ease forwards";
 
         setTimeout(function(){
-
             toast.remove();
-
         },250);
 
     },3000);
@@ -3715,88 +1236,42 @@ function showToast(message,type="success"){
 }
 
 
-/* =====================================================
-   LOGIN
-===================================================== */
+/* LOGIN */
 
 async function login(){
 
-    const email =
-    document.getElementById(
-        "adminEmail"
-    ).value.trim();
-
-
-    const password =
-    document.getElementById(
-        "adminPassword"
-    ).value;
-
-
-    const button =
-    document.getElementById(
-        "loginButton"
-    );
-
-
-    const error =
-    document.getElementById(
-        "loginError"
-    );
-
+    const email = document.getElementById("adminEmail").value.trim();
+    const password = document.getElementById("adminPassword").value;
+    const button = document.getElementById("loginButton");
+    const error = document.getElementById("loginError");
 
     error.textContent = "";
 
-
     if(!email){
-
-        error.textContent =
-        "اكتب البريد الإلكتروني.";
-
+        error.textContent = "اكتب البريد الإلكتروني.";
         return;
-
     }
-
 
     if(!password){
-
-        error.textContent =
-        "اكتب كلمة المرور.";
-
+        error.textContent = "اكتب كلمة المرور.";
         return;
-
     }
 
-
     button.disabled = true;
-
-    button.textContent =
-    "جاري تسجيل الدخول...";
-
+    button.textContent = "جاري تسجيل الدخول...";
 
     try{
 
-        const result =
-        await auth.signInWithEmailAndPassword(
-            email,
-            password
-        );
+        const result = await auth.signInWithEmailAndPassword(email,password);
 
-
-        if(
-            !result.user ||
-            result.user.uid !== ADMIN_UID
-        ){
+        if(!result.user || result.user.uid !== ADMIN_UID){
 
             await auth.signOut();
 
-            error.textContent =
-            "هذا الحساب غير مصرح له بالدخول إلى لوحة التحكم.";
+            error.textContent = "هذا الحساب غير مصرح له بالدخول إلى لوحة التحكم.";
 
             button.disabled = false;
-
-            button.textContent =
-            "دخول لوحة التحكم";
+            button.textContent = "دخول لوحة التحكم";
 
             return;
 
@@ -3808,340 +1283,202 @@ async function login(){
 
         console.error(errorObject);
 
-        error.textContent =
-        getFirebaseAuthError(errorObject);
+        error.textContent = getFirebaseAuthError(errorObject);
 
         button.disabled = false;
-
-        button.textContent =
-        "دخول لوحة التحكم";
+        button.textContent = "دخول لوحة التحكم";
 
     }
 
 }
 
 
-/* =====================================================
-   AUTH ERRORS
-===================================================== */
+/* AUTH ERRORS */
 
 function getFirebaseAuthError(error){
 
-    const code =
-    error && error.code
-    ? error.code
-    : "";
-
+    const code = error && error.code ? error.code : "";
 
     if(
         code === "auth/invalid-credential" ||
         code === "auth/wrong-password" ||
         code === "auth/user-not-found"
     ){
-
         return "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
-
     }
-
 
     if(code === "auth/invalid-email"){
-
         return "البريد الإلكتروني غير صحيح.";
-
     }
-
 
     if(code === "auth/too-many-requests"){
-
         return "تم إجراء محاولات كثيرة. حاول مرة أخرى بعد قليل.";
-
     }
-
 
     if(code === "auth/network-request-failed"){
-
         return "تأكد من اتصال الإنترنت.";
-
     }
-
 
     return "حدث خطأ أثناء تسجيل الدخول. حاول مرة أخرى.";
 
 }
 
 
-/* =====================================================
-   AUTH STATE
-===================================================== */
+/* AUTH STATE */
 
-auth.onAuthStateChanged(
-async function(user){
+auth.onAuthStateChanged(async function(user){
 
     if(user){
 
         if(user.uid !== ADMIN_UID){
-
             await auth.signOut();
-
             return;
-
         }
 
+        document.getElementById("loginScreen").style.display = "none";
 
-        document.getElementById(
-            "loginScreen"
-        ).style.display =
-        "none";
+        document.getElementById("dashboard").classList.add("active");
 
+        document.getElementById("loginError").textContent = "";
 
-        document.getElementById(
-            "dashboard"
-        ).classList.add("active");
-
-
-        document.getElementById(
-            "loginError"
-        ).textContent = "";
-
-
-        /*
-           مهم:
-           لا نضع البريد الإلكتروني
-           داخل خانة تسجيل الدخول.
-        */
-
+        /* مهم: لا نضع البريد الإلكتروني داخل خانة تسجيل الدخول. */
 
         try{
-
             await loadData();
-
         }
 
         catch(error){
-
             console.error(error);
-
-            showToast(
-                "تم تسجيل الدخول ولكن حدث خطأ أثناء تحميل البيانات.",
-                "error"
-            );
-
+            showToast("تم تسجيل الدخول ولكن حدث خطأ أثناء تحميل البيانات.","error");
         }
 
     }
 
     else{
 
-        document.getElementById(
-            "loginScreen"
-        ).style.display =
-        "flex";
+        document.getElementById("loginScreen").style.display = "flex";
 
+        document.getElementById("dashboard").classList.remove("active");
 
-        document.getElementById(
-            "dashboard"
-        ).classList.remove("active");
-
-
-        document.getElementById(
-            "adminPassword"
-        ).value = "";
+        document.getElementById("adminPassword").value = "";
 
     }
 
 });
 
 
-/* =====================================================
-   LOGOUT
-===================================================== */
+/* LOGOUT */
 
 async function logout(){
 
     try{
-
         await auth.signOut();
-
         closeAllModals();
-
     }
 
     catch(error){
-
         console.error(error);
-
-        showToast(
-            "حدث خطأ أثناء تسجيل الخروج.",
-            "error"
-        );
-
+        showToast("حدث خطأ أثناء تسجيل الخروج.","error");
     }
 
 }
 
 
-/* =====================================================
-   LOAD DATA
-===================================================== */
+/* LOAD DATA */
 
 async function loadData(){
 
-    const seriesSnapshot =
-    await db.ref("series").once("value");
+    const seriesSnapshot = await db.ref("series").once("value");
+
+    const duasSnapshot = await db.ref("duas").once("value");
+
+    const accessSnapshot = await db.ref("settings/accessCode").once("value");
 
 
-    const duasSnapshot =
-    await db.ref("duas").once("value");
-
-
-    const accessSnapshot =
-    await db.ref(
-        "settings/accessCode"
-    ).once("value");
-
-
-    /* =========================
-       SERIES
-    ========================= */
+    /* SERIES */
 
     if(seriesSnapshot.exists()){
 
-        const value =
-        seriesSnapshot.val();
-
+        const value = seriesSnapshot.val();
 
         if(Array.isArray(value)){
-
             series = value;
-
         }
 
         else{
-
-            series =
-            Object.keys(value || {})
+            series = Object.keys(value || {})
             .sort(function(a,b){
-
                 return Number(a) - Number(b);
-
             })
             .map(function(key){
-
                 return value[key];
-
             });
-
         }
 
     }
 
     else{
-
-        series =
-        JSON.parse(
-            JSON.stringify(defaultSeries)
-        );
-
-
+        series = JSON.parse(JSON.stringify(defaultSeries));
         await db.ref("series").set(series);
-
     }
 
 
-    /* =========================
-       DUAS
-    ========================= */
+    /* DUAS */
 
     if(duasSnapshot.exists()){
 
-        const value =
-        duasSnapshot.val();
-
+        const value = duasSnapshot.val();
 
         if(Array.isArray(value)){
-
             duas = value;
-
         }
 
         else{
-
-            duas =
-            Object.keys(value || {})
+            duas = Object.keys(value || {})
             .sort(function(a,b){
-
                 return Number(a) - Number(b);
-
             })
             .map(function(key){
 
-                const item =
-                value[key];
-
+                const item = value[key];
 
                 if(typeof item === "string"){
-
                     return item;
-
                 }
 
-
-                if(
-                    item &&
-                    typeof item.text === "string"
-                ){
-
+                if(item && typeof item.text === "string"){
                     return item.text;
-
                 }
-
 
                 return "";
 
             })
             .filter(Boolean);
-
         }
 
     }
 
     else{
-
-        duas =
-        [...defaultDuas];
-
-
+        duas = [...defaultDuas];
         await db.ref("duas").set(duas);
-
     }
 
 
-    /* =========================
-       ACCESS CODE
-    ========================= */
+    /* ACCESS CODE */
 
     if(accessSnapshot.exists()){
-
-        document.getElementById(
-            "accessCode"
-        ).value =
-        accessSnapshot.val();
-
+        document.getElementById("accessCode").value = accessSnapshot.val();
     }
 
     else{
-
-        document.getElementById(
-            "accessCode"
-        ).value =
-        "5050";
-
-
-        await db.ref(
-            "settings/accessCode"
-        ).set("5050");
-
+        document.getElementById("accessCode").value = "5050";
+        await db.ref("settings/accessCode").set("5050");
     }
+
+
+    /* APP UPDATE (NEW) */
+
+    await loadUpdate();
 
 
     normalizeData();
@@ -4151,56 +1488,34 @@ async function loadData(){
 }
 
 
-/* =====================================================
-   NORMALIZE
-===================================================== */
+/* NORMALIZE */
 
 function normalizeData(){
 
     if(!Array.isArray(series)){
-
         series = [];
-
     }
-
 
     if(!Array.isArray(duas)){
-
         duas = [];
-
     }
-
 
     series.forEach(function(item,index){
 
         if(!item.id){
-
-            item.id =
-            Date.now() + index;
-
+            item.id = Date.now() + index;
         }
-
 
         if(!item.name){
-
-            item.name =
-            "مسلسل " + (index + 1);
-
+            item.name = "مسلسل " + (index + 1);
         }
-
 
         if(!item.image){
-
-            item.image =
-            "https://via.placeholder.com/300x450";
-
+            item.image = "https://via.placeholder.com/300x450";
         }
 
-
         if(!Array.isArray(item.episodes)){
-
             item.episodes = [];
-
         }
 
     });
@@ -4208,135 +1523,76 @@ function normalizeData(){
 }
 
 
-/* =====================================================
-   SAVE SERIES
-===================================================== */
+/* SAVE SERIES */
 
 async function saveSeriesData(){
-
     await db.ref("series").set(series);
-
 }
 
 
-/* =====================================================
-   SAVE DUAS
-===================================================== */
+/* SAVE DUAS */
 
 async function saveDuasData(){
-
     await db.ref("duas").set(duas);
-
 }
 
 
-/* =====================================================
-   RENDER ALL
-===================================================== */
+/* RENDER ALL */
 
 function renderAll(){
-
     renderSeries();
-
     renderEpisodesSeries();
-
     renderDuas();
-
     updateStats();
-
 }
 
 
-/* =====================================================
-   STATS
-===================================================== */
+/* STATS */
 
 function updateStats(){
 
-    document.getElementById(
-        "seriesCount"
-    ).textContent =
-    series.length;
-
+    document.getElementById("seriesCount").textContent = series.length;
 
     let totalEpisodes = 0;
 
-
     series.forEach(function(item){
-
-        totalEpisodes +=
-        Array.isArray(item.episodes)
-        ? item.episodes.length
-        : 0;
-
+        totalEpisodes += Array.isArray(item.episodes) ? item.episodes.length : 0;
     });
 
-
-    document.getElementById(
-        "episodeCount"
-    ).textContent =
-    totalEpisodes;
+    document.getElementById("episodeCount").textContent = totalEpisodes;
 
 }
 
 
-/* =====================================================
-   RENDER SERIES
-===================================================== */
+/* RENDER SERIES */
 
 function renderSeries(){
 
-    const table =
-    document.getElementById(
-        "seriesTable"
-    );
-
+    const table = document.getElementById("seriesTable");
 
     table.innerHTML = "";
-
 
     if(series.length === 0){
 
         table.innerHTML = `
-
             <tr>
-
                 <td colspan="3">
-
                     <div class="empty-state">
-
-                        <div class="empty-icon">
-                            📺
-                        </div>
-
-                        <h3>
-                            لا توجد مسلسلات
-                        </h3>
-
-                        <p>
-                            ابدأ بإضافة أول مسلسل إلى التطبيق.
-                        </p>
-
+                        <div class="empty-icon">📺</div>
+                        <h3>لا توجد مسلسلات</h3>
+                        <p>ابدأ بإضافة أول مسلسل إلى التطبيق.</p>
                     </div>
-
                 </td>
-
             </tr>
-
         `;
 
         return;
 
     }
 
-
     series.forEach(function(item){
 
-        const episodeCount =
-        Array.isArray(item.episodes)
-        ? item.episodes.length
-        : 0;
-
+        const episodeCount = Array.isArray(item.episodes) ? item.episodes.length : 0;
 
         table.innerHTML += `
 
@@ -4352,62 +1608,35 @@ function renderSeries(){
                         onerror="this.src='https://via.placeholder.com/300x450'">
 
                         <div>
-
-                            <div class="series-name">
-                                ${escapeHTML(item.name)}
-                            </div>
-
-                            <span class="series-meta">
-                                مسلسل رمضاني
-                            </span>
-
+                            <div class="series-name">${escapeHTML(item.name)}</div>
+                            <span class="series-meta">مسلسل رمضاني</span>
                         </div>
 
                     </div>
 
                 </td>
 
-
                 <td data-label="الحلقات">
-
                     <span class="count-badge">
-
                         ${episodeCount}
                         حلقة
-
                     </span>
-
                 </td>
-
 
                 <td class="cell-actions" data-label="الإجراءات">
 
                     <div class="actions">
 
-                        <button
-                        class="action-btn manage-btn"
-                        onclick="manageEpisodes(${item.id})">
-
+                        <button class="action-btn manage-btn" onclick="manageEpisodes(${item.id})">
                             🎬 الحلقات
-
                         </button>
 
-
-                        <button
-                        class="action-btn edit-btn"
-                        onclick="editSeries(${item.id})">
-
+                        <button class="action-btn edit-btn" onclick="editSeries(${item.id})">
                             ✏️ تعديل
-
                         </button>
 
-
-                        <button
-                        class="action-btn delete-btn"
-                        onclick="deleteSeries(${item.id})">
-
+                        <button class="action-btn delete-btn" onclick="deleteSeries(${item.id})">
                             🗑 حذف
-
                         </button>
 
                     </div>
@@ -4423,341 +1652,192 @@ function renderSeries(){
 }
 
 
-/* =====================================================
-   ADD SERIES
-===================================================== */
+/* ADD SERIES */
 
 function openAddSeries(){
 
     editingSeriesId = null;
 
+    document.getElementById("seriesModalTitle").textContent = "إضافة مسلسل جديد";
 
-    document.getElementById(
-        "seriesModalTitle"
-    ).textContent =
-    "إضافة مسلسل جديد";
+    document.getElementById("seriesName").value = "";
 
+    document.getElementById("seriesImage").value = "";
 
-    document.getElementById(
-        "seriesName"
-    ).value = "";
-
-
-    document.getElementById(
-        "seriesImage"
-    ).value = "";
-
-
-    document.getElementById(
-        "seriesModal"
-    ).classList.add("active");
-
+    document.getElementById("seriesModal").classList.add("active");
 
     setTimeout(function(){
-
-        document.getElementById(
-            "seriesName"
-        ).focus();
-
+        document.getElementById("seriesName").focus();
     },100);
 
 }
 
 
-/* =====================================================
-   EDIT SERIES
-===================================================== */
+/* EDIT SERIES */
 
 function editSeries(id){
 
-    const item =
-    series.find(function(s){
-
-        return Number(s.id) ===
-        Number(id);
-
+    const item = series.find(function(s){
+        return Number(s.id) === Number(id);
     });
-
 
     if(!item){
         return;
     }
 
+    editingSeriesId = Number(id);
 
-    editingSeriesId =
-    Number(id);
+    document.getElementById("seriesModalTitle").textContent = "تعديل المسلسل";
 
+    document.getElementById("seriesName").value = item.name;
 
-    document.getElementById(
-        "seriesModalTitle"
-    ).textContent =
-    "تعديل المسلسل";
+    document.getElementById("seriesImage").value = item.image;
 
-
-    document.getElementById(
-        "seriesName"
-    ).value =
-    item.name;
-
-
-    document.getElementById(
-        "seriesImage"
-    ).value =
-    item.image;
-
-
-    document.getElementById(
-        "seriesModal"
-    ).classList.add("active");
+    document.getElementById("seriesModal").classList.add("active");
 
 }
 
 
-/* =====================================================
-   SAVE SERIES
-===================================================== */
+/* SAVE SERIES */
 
 async function saveSeries(){
 
-    const name =
-    document.getElementById(
-        "seriesName"
-    ).value.trim();
+    const name = document.getElementById("seriesName").value.trim();
 
-
-    const image =
-    document.getElementById(
-        "seriesImage"
-    ).value.trim();
-
+    const image = document.getElementById("seriesImage").value.trim();
 
     if(!name){
 
-        showToast(
-            "اكتب اسم المسلسل أولًا.",
-            "error"
-        );
+        showToast("اكتب اسم المسلسل أولًا.","error");
 
-        document.getElementById(
-            "seriesName"
-        ).focus();
+        document.getElementById("seriesName").focus();
 
         return;
 
     }
 
-
     try{
 
         if(editingSeriesId !== null){
 
-            const item =
-            series.find(function(s){
-
-                return Number(s.id) ===
-                Number(editingSeriesId);
-
+            const item = series.find(function(s){
+                return Number(s.id) === Number(editingSeriesId);
             });
-
 
             if(!item){
                 return;
             }
 
+            item.name = name;
 
-            item.name =
-            name;
-
-
-            item.image =
-            image ||
-            "https://via.placeholder.com/300x450";
-
+            item.image = image || "https://via.placeholder.com/300x450";
 
             await saveSeriesData();
-
 
             closeModal("seriesModal");
 
             renderAll();
 
-
-            showToast(
-                "تم تعديل المسلسل وحفظ التغييرات بنجاح."
-            );
+            showToast("تم تعديل المسلسل وحفظ التغييرات بنجاح.");
 
         }
 
         else{
 
             series.push({
-
                 id:Date.now(),
-
                 name:name,
-
-                image:
-                image ||
-                "https://via.placeholder.com/300x450",
-
+                image:image || "https://via.placeholder.com/300x450",
                 episodes:[]
-
             });
 
-
             await saveSeriesData();
-
 
             closeModal("seriesModal");
 
             renderAll();
 
-
-            showToast(
-                "تمت إضافة المسلسل بنجاح."
-            );
+            showToast("تمت إضافة المسلسل بنجاح.");
 
         }
 
     }
 
     catch(error){
-
         console.error(error);
-
-        showToast(
-            "حدث خطأ أثناء حفظ المسلسل في Firebase.",
-            "error"
-        );
-
+        showToast("حدث خطأ أثناء حفظ المسلسل في Firebase.","error");
     }
 
 }
 
 
-/* =====================================================
-   DELETE SERIES
-===================================================== */
+/* DELETE SERIES */
 
 async function deleteSeries(id){
 
-    const item =
-    series.find(function(s){
-
-        return Number(s.id) ===
-        Number(id);
-
+    const item = series.find(function(s){
+        return Number(s.id) === Number(id);
     });
-
 
     if(!item){
         return;
     }
 
-
-    if(!confirm(
-        `هل تريد حذف مسلسل "${item.name}" وكل حلقاته؟`
-    )){
-
+    if(!confirm(`هل تريد حذف مسلسل "${item.name}" وكل حلقاته؟`)){
         return;
-
     }
-
 
     try{
 
-        series =
-        series.filter(function(s){
-
-            return Number(s.id) !==
-            Number(id);
-
+        series = series.filter(function(s){
+            return Number(s.id) !== Number(id);
         });
-
 
         await saveSeriesData();
 
-
         renderAll();
 
-
-        showToast(
-            "تم حذف المسلسل وجميع حلقاته."
-        );
+        showToast("تم حذف المسلسل وجميع حلقاته.");
 
     }
 
     catch(error){
-
         console.error(error);
-
-        showToast(
-            "حدث خطأ أثناء حذف المسلسل.",
-            "error"
-        );
-
+        showToast("حدث خطأ أثناء حذف المسلسل.","error");
     }
 
 }
 
 
-/* =====================================================
-   EPISODES SERIES TABLE
-===================================================== */
+/* EPISODES SERIES TABLE */
 
 function renderEpisodesSeries(){
 
-    const table =
-    document.getElementById(
-        "episodesSeriesTable"
-    );
-
+    const table = document.getElementById("episodesSeriesTable");
 
     table.innerHTML = "";
-
 
     if(series.length === 0){
 
         table.innerHTML = `
-
             <tr>
-
                 <td colspan="3">
-
                     <div class="empty-state">
-
-                        <div class="empty-icon">
-                            🎬
-                        </div>
-
-                        <h3>
-                            لا توجد مسلسلات
-                        </h3>
-
-                        <p>
-                            أضف مسلسلًا أولًا لبدء إدارة الحلقات.
-                        </p>
-
+                        <div class="empty-icon">🎬</div>
+                        <h3>لا توجد مسلسلات</h3>
+                        <p>أضف مسلسلًا أولًا لبدء إدارة الحلقات.</p>
                     </div>
-
                 </td>
-
             </tr>
-
         `;
 
         return;
 
     }
 
-
     series.forEach(function(item){
 
-        const count =
-        Array.isArray(item.episodes)
-        ? item.episodes.length
-        : 0;
-
+        const count = Array.isArray(item.episodes) ? item.episodes.length : 0;
 
         table.innerHTML += `
 
@@ -4773,43 +1853,24 @@ function renderEpisodesSeries(){
                         onerror="this.src='https://via.placeholder.com/300x450'">
 
                         <div>
-
-                            <div class="series-name">
-                                ${escapeHTML(item.name)}
-                            </div>
-
-                            <span class="series-meta">
-                                مسلسل رمضاني
-                            </span>
-
+                            <div class="series-name">${escapeHTML(item.name)}</div>
+                            <span class="series-meta">مسلسل رمضاني</span>
                         </div>
 
                     </div>
 
                 </td>
 
-
                 <td data-label="عدد الحلقات">
-
-                    <span class="count-badge">
-                        ${count} حلقة
-                    </span>
-
+                    <span class="count-badge">${count} حلقة</span>
                 </td>
-
 
                 <td class="cell-actions" data-label="الإجراءات">
 
                     <div class="actions">
-
-                        <button
-                        class="action-btn manage-btn"
-                        onclick="manageEpisodes(${item.id})">
-
+                        <button class="action-btn manage-btn" onclick="manageEpisodes(${item.id})">
                             🎬 إدارة الحلقات
-
                         </button>
-
                     </div>
 
                 </td>
@@ -4823,141 +1884,78 @@ function renderEpisodesSeries(){
 }
 
 
-/* =====================================================
-   MANAGE EPISODES
-===================================================== */
+/* MANAGE EPISODES */
 
 function manageEpisodes(id){
 
-    const item =
-    series.find(function(s){
-
-        return Number(s.id) ===
-        Number(id);
-
+    const item = series.find(function(s){
+        return Number(s.id) === Number(id);
     });
-
 
     if(!item){
         return;
     }
 
-
-    selectedSeriesId =
-    Number(id);
+    selectedSeriesId = Number(id);
 
     editingEpisodeIndex = null;
 
+    document.getElementById("manageSeriesName").textContent = item.name;
 
-    document.getElementById(
-        "manageSeriesName"
-    ).textContent =
-    item.name;
+    document.getElementById("manageSeriesImage").src = item.image;
 
+    document.getElementById("manageSeriesCount").textContent = item.episodes.length + " حلقة";
 
-    document.getElementById(
-        "manageSeriesImage"
-    ).src =
-    item.image;
+    document.getElementById("episodeName").value = "";
 
-
-    document.getElementById(
-        "manageSeriesCount"
-    ).textContent =
-    item.episodes.length +
-    " حلقة";
-
-
-    document.getElementById(
-        "episodeName"
-    ).value = "";
-
-
-    document.getElementById(
-        "episodeLink"
-    ).value = "";
-
+    document.getElementById("episodeLink").value = "";
 
     setEpisodeAddMode();
 
     renderManageEpisodes();
 
-
-    document.getElementById(
-        "manageEpisodesModal"
-    ).classList.add("active");
+    document.getElementById("manageEpisodesModal").classList.add("active");
 
 }
 
 
-/* =====================================================
-   RENDER EPISODES
-===================================================== */
+/* RENDER EPISODES */
 
 function renderManageEpisodes(){
 
-    const list =
-    document.getElementById(
-        "manageEpisodesList"
-    );
+    const list = document.getElementById("manageEpisodesList");
 
-
-    const item =
-    series.find(function(s){
-
-        return Number(s.id) ===
-        Number(selectedSeriesId);
-
+    const item = series.find(function(s){
+        return Number(s.id) === Number(selectedSeriesId);
     });
 
-
     list.innerHTML = "";
-
 
     if(!item){
         return;
     }
 
+    const count = item.episodes.length;
 
-    const count =
-    item.episodes.length;
+    document.getElementById("manageSeriesCount").textContent = count + " حلقة";
 
-
-    document.getElementById(
-        "manageSeriesCount"
-    ).textContent =
-    count + " حلقة";
-
-
-    document.getElementById(
-        "episodesListCount"
-    ).textContent =
-    count + " حلقة";
-
+    document.getElementById("episodesListCount").textContent = count + " حلقة";
 
     if(count === 0){
 
         list.innerHTML = `
-
             <div class="empty-episodes">
-
                 لا توجد حلقات لهذا المسلسل حتى الآن.
-
                 <br>
-
                 أضف أول حلقة من النموذج أعلاه.
-
             </div>
-
         `;
 
         return;
 
     }
 
-
-    item.episodes.forEach(
-    function(ep,index){
+    item.episodes.forEach(function(ep,index){
 
         list.innerHTML += `
 
@@ -4965,50 +1963,28 @@ function renderManageEpisodes(){
 
                 <div class="episode-card-top">
 
-                    <div class="episode-name">
+                    <div class="episode-name">${escapeHTML(ep.name)}</div>
 
-                        ${escapeHTML(ep.name)}
-
-                    </div>
-
-
-                    <div class="episode-number">
-
-                        #${index + 1}
-
-                    </div>
+                    <div class="episode-number">#${index + 1}</div>
 
                 </div>
-
 
                 <a
                 class="episode-link"
                 href="${escapeAttribute(ep.link)}"
                 target="_blank"
                 rel="noopener">
-
                     ${escapeHTML(ep.link)}
-
                 </a>
-
 
                 <div class="episode-actions">
 
-                    <button
-                    class="action-btn edit-btn"
-                    onclick="editEpisode(${index})">
-
+                    <button class="action-btn edit-btn" onclick="editEpisode(${index})">
                         ✏️ تعديل
-
                     </button>
 
-
-                    <button
-                    class="action-btn delete-btn"
-                    onclick="deleteEpisode(${index})">
-
+                    <button class="action-btn delete-btn" onclick="deleteEpisode(${index})">
                         🗑 حذف
-
                     </button>
 
                 </div>
@@ -5022,9 +1998,7 @@ function renderManageEpisodes(){
 }
 
 
-/* =====================================================
-   ADD EPISODE MODE
-===================================================== */
+/* ADD EPISODE MODE */
 
 function openAddEpisode(){
 
@@ -5032,224 +2006,117 @@ function openAddEpisode(){
 
     setEpisodeAddMode();
 
+    document.getElementById("episodeName").value = "";
 
-    document.getElementById(
-        "episodeName"
-    ).value = "";
-
-
-    document.getElementById(
-        "episodeLink"
-    ).value = "";
+    document.getElementById("episodeLink").value = "";
 
 }
 
 
-/* =====================================================
-   EDIT EPISODE
-===================================================== */
+/* EDIT EPISODE */
 
 function editEpisode(index){
 
-    const item =
-    series.find(function(s){
-
-        return Number(s.id) ===
-        Number(selectedSeriesId);
-
+    const item = series.find(function(s){
+        return Number(s.id) === Number(selectedSeriesId);
     });
 
-
-    if(
-        !item ||
-        !item.episodes[index]
-    ){
-
+    if(!item || !item.episodes[index]){
         return;
-
     }
 
+    const ep = item.episodes[index];
 
-    const ep =
-    item.episodes[index];
+    editingEpisodeIndex = index;
 
+    document.getElementById("episodeName").value = ep.name;
 
-    editingEpisodeIndex =
-    index;
+    document.getElementById("episodeLink").value = ep.link;
 
+    document.getElementById("episodeSaveButton").textContent = "حفظ تعديل الحلقة";
 
-    document.getElementById(
-        "episodeName"
-    ).value =
-    ep.name;
-
-
-    document.getElementById(
-        "episodeLink"
-    ).value =
-    ep.link;
-
-
-    document.getElementById(
-        "episodeSaveButton"
-    ).textContent =
-    "حفظ تعديل الحلقة";
-
-
-    document.getElementById(
-        "episodeName"
-    ).focus();
+    document.getElementById("episodeName").focus();
 
 }
 
 
-/* =====================================================
-   EPISODE ADD MODE
-===================================================== */
+/* EPISODE ADD MODE */
 
 function setEpisodeAddMode(){
-
-    document.getElementById(
-        "episodeSaveButton"
-    ).textContent =
-    "إضافة الحلقة";
-
+    document.getElementById("episodeSaveButton").textContent = "إضافة الحلقة";
 }
 
 
-/* =====================================================
-   SAVE EPISODE
-===================================================== */
+/* SAVE EPISODE */
 
 async function saveEpisode(){
 
-    let name =
-    document.getElementById(
-        "episodeName"
-    ).value.trim();
+    let name = document.getElementById("episodeName").value.trim();
 
-
-    const link =
-    document.getElementById(
-        "episodeLink"
-    ).value.trim();
-
+    const link = document.getElementById("episodeLink").value.trim();
 
     if(!link){
 
-        showToast(
-            "ضع رابط الحلقة أولًا.",
-            "error"
-        );
+        showToast("ضع رابط الحلقة أولًا.","error");
 
-        document.getElementById(
-            "episodeLink"
-        ).focus();
+        document.getElementById("episodeLink").focus();
 
         return;
 
     }
 
-
-    const item =
-    series.find(function(s){
-
-        return Number(s.id) ===
-        Number(selectedSeriesId);
-
+    const item = series.find(function(s){
+        return Number(s.id) === Number(selectedSeriesId);
     });
 
-
     if(!item){
-
-        showToast(
-            "لم يتم تحديد المسلسل.",
-            "error"
-        );
-
+        showToast("لم يتم تحديد المسلسل.","error");
         return;
-
     }
-
 
     try{
 
         if(editingEpisodeIndex !== null){
 
             if(!name){
-
-                name =
-                "الحلقة " +
-                (editingEpisodeIndex + 1);
-
+                name = "الحلقة " + (editingEpisodeIndex + 1);
             }
 
-
-            item.episodes[
-                editingEpisodeIndex
-            ] = {
-
+            item.episodes[editingEpisodeIndex] = {
                 name:name,
-
                 link:link
-
             };
-
 
             await saveSeriesData();
 
-
-            showToast(
-                "تم تعديل الحلقة بنجاح."
-            );
+            showToast("تم تعديل الحلقة بنجاح.");
 
         }
 
         else{
 
             if(!name){
-
-                name =
-                "الحلقة " +
-                (item.episodes.length + 1);
-
+                name = "الحلقة " + (item.episodes.length + 1);
             }
 
-
             item.episodes.push({
-
                 name:name,
-
                 link:link
-
             });
-
 
             await saveSeriesData();
 
-
-            showToast(
-                "تمت إضافة الحلقة بنجاح."
-            );
+            showToast("تمت إضافة الحلقة بنجاح.");
 
         }
 
+        document.getElementById("episodeName").value = "";
 
-        document.getElementById(
-            "episodeName"
-        ).value = "";
-
-
-        document.getElementById(
-            "episodeLink"
-        ).value = "";
-
+        document.getElementById("episodeLink").value = "";
 
         editingEpisodeIndex = null;
 
-
         setEpisodeAddMode();
-
 
         renderManageEpisodes();
 
@@ -5258,165 +2125,88 @@ async function saveEpisode(){
     }
 
     catch(error){
-
         console.error(error);
-
-        showToast(
-            "حدث خطأ أثناء حفظ الحلقة في Firebase.",
-            "error"
-        );
-
+        showToast("حدث خطأ أثناء حفظ الحلقة في Firebase.","error");
     }
 
 }
 
 
-/* =====================================================
-   DELETE EPISODE
-===================================================== */
+/* DELETE EPISODE */
 
 async function deleteEpisode(index){
 
-    const item =
-    series.find(function(s){
-
-        return Number(s.id) ===
-        Number(selectedSeriesId);
-
+    const item = series.find(function(s){
+        return Number(s.id) === Number(selectedSeriesId);
     });
 
-
-    if(
-        !item ||
-        !item.episodes[index]
-    ){
-
+    if(!item || !item.episodes[index]){
         return;
-
     }
 
+    const ep = item.episodes[index];
 
-    const ep =
-    item.episodes[index];
-
-
-    if(!confirm(
-        `هل تريد حذف "${ep.name}"؟`
-    )){
-
+    if(!confirm(`هل تريد حذف "${ep.name}"؟`)){
         return;
-
     }
-
 
     try{
 
-        item.episodes.splice(
-            index,
-            1
-        );
+        item.episodes.splice(index,1);
 
+        /* إعادة ترقيم الحلقات التي تستخدم التسمية التلقائية فقط */
 
-        /*
-           إعادة ترقيم الحلقات التي
-           تستخدم التسمية التلقائية فقط
-        */
+        item.episodes.forEach(function(episode,i){
 
-        item.episodes.forEach(
-        function(episode,i){
-
-            if(
-                /^الحلقة\s+\d+$/.test(
-                    episode.name
-                )
-            ){
-
-                episode.name =
-                "الحلقة " +
-                (i + 1);
-
+            if(/^الحلقة\s+\d+$/.test(episode.name)){
+                episode.name = "الحلقة " + (i + 1);
             }
 
         });
 
-
         await saveSeriesData();
-
 
         renderManageEpisodes();
 
         renderAll();
 
-
-        showToast(
-            "تم حذف الحلقة بنجاح."
-        );
+        showToast("تم حذف الحلقة بنجاح.");
 
     }
 
     catch(error){
-
         console.error(error);
-
-        showToast(
-            "حدث خطأ أثناء حذف الحلقة.",
-            "error"
-        );
-
+        showToast("حدث خطأ أثناء حذف الحلقة.","error");
     }
 
 }
 
 
-/* =====================================================
-   RENDER DUAS
-===================================================== */
+/* RENDER DUAS */
 
 function renderDuas(){
 
-    const table =
-    document.getElementById(
-        "duasTable"
-    );
-
+    const table = document.getElementById("duasTable");
 
     table.innerHTML = "";
-
 
     if(duas.length === 0){
 
         table.innerHTML = `
-
             <tr>
-
                 <td colspan="2">
-
                     <div class="empty-state">
-
-                        <div class="empty-icon">
-                            🤲
-                        </div>
-
-                        <h3>
-                            لا توجد أدعية
-                        </h3>
-
-                        <p>
-                            أضف أول دعاء ليظهر هنا.
-                        </p>
-
+                        <div class="empty-icon">🤲</div>
+                        <h3>لا توجد أدعية</h3>
+                        <p>أضف أول دعاء ليظهر هنا.</p>
                     </div>
-
                 </td>
-
             </tr>
-
         `;
 
         return;
 
     }
-
 
     duas.forEach(function(item,index){
 
@@ -5428,38 +2218,24 @@ function renderDuas(){
 
                     <div class="series-cell">
 
-                        <span class="count-badge">
-                            ${index + 1}
-                        </span>
+                        <span class="count-badge">${index + 1}</span>
 
-                        <div class="series-name">
-                            ${escapeHTML(item)}
-                        </div>
+                        <div class="series-name">${escapeHTML(item)}</div>
 
                     </div>
 
                 </td>
 
-
                 <td class="cell-actions" data-label="الإجراءات">
 
                     <div class="actions">
 
-                        <button
-                        class="action-btn edit-btn"
-                        onclick="editDua(${index})">
-
+                        <button class="action-btn edit-btn" onclick="editDua(${index})">
                             ✏️ تعديل
-
                         </button>
 
-
-                        <button
-                        class="action-btn delete-btn"
-                        onclick="deleteDua(${index})">
-
+                        <button class="action-btn delete-btn" onclick="deleteDua(${index})">
                             🗑 حذف
-
                         </button>
 
                     </div>
@@ -5475,120 +2251,69 @@ function renderDuas(){
 }
 
 
-/* =====================================================
-   ADD DUA
-===================================================== */
+/* ADD DUA */
 
 function openAddDua(){
 
     editingDuaIndex = null;
 
+    document.getElementById("duaModalTitle").textContent = "إضافة دعاء";
 
-    document.getElementById(
-        "duaModalTitle"
-    ).textContent =
-    "إضافة دعاء";
+    document.getElementById("duaText").value = "";
 
-
-    document.getElementById(
-        "duaText"
-    ).value = "";
-
-
-    document.getElementById(
-        "duaModal"
-    ).classList.add("active");
-
+    document.getElementById("duaModal").classList.add("active");
 
     setTimeout(function(){
-
-        document.getElementById(
-            "duaText"
-        ).focus();
-
+        document.getElementById("duaText").focus();
     },100);
 
 }
 
 
-/* =====================================================
-   EDIT DUA
-===================================================== */
+/* EDIT DUA */
 
 function editDua(index){
 
-    editingDuaIndex =
-    index;
+    editingDuaIndex = index;
 
+    document.getElementById("duaModalTitle").textContent = "تعديل الدعاء";
 
-    document.getElementById(
-        "duaModalTitle"
-    ).textContent =
-    "تعديل الدعاء";
+    document.getElementById("duaText").value = duas[index];
 
-
-    document.getElementById(
-        "duaText"
-    ).value =
-    duas[index];
-
-
-    document.getElementById(
-        "duaModal"
-    ).classList.add("active");
+    document.getElementById("duaModal").classList.add("active");
 
 }
 
 
-/* =====================================================
-   SAVE DUA
-===================================================== */
+/* SAVE DUA */
 
 async function saveDua(){
 
-    const text =
-    document.getElementById(
-        "duaText"
-    ).value.trim();
-
+    const text = document.getElementById("duaText").value.trim();
 
     if(!text){
 
-        showToast(
-            "اكتب نص الدعاء أولًا.",
-            "error"
-        );
+        showToast("اكتب نص الدعاء أولًا.","error");
 
-        document.getElementById(
-            "duaText"
-        ).focus();
+        document.getElementById("duaText").focus();
 
         return;
 
     }
 
-
     try{
 
         if(editingDuaIndex !== null){
 
-            duas[
-                editingDuaIndex
-            ] =
-            text;
-
+            duas[editingDuaIndex] = text;
 
             await saveDuasData();
-
 
             closeModal("duaModal");
 
             renderDuas();
 
-
-            showToast(
-                "تم تعديل الدعاء وحفظه بنجاح."
-            );
+            showToast("تم تعديل الدعاء وحفظه بنجاح.");
 
         }
 
@@ -5596,230 +2321,212 @@ async function saveDua(){
 
             duas.push(text);
 
-
             await saveDuasData();
-
 
             closeModal("duaModal");
 
             renderDuas();
 
-
-            showToast(
-                "تمت إضافة الدعاء بنجاح."
-            );
+            showToast("تمت إضافة الدعاء بنجاح.");
 
         }
 
     }
 
     catch(error){
-
         console.error(error);
-
-        showToast(
-            "حدث خطأ أثناء حفظ الدعاء في Firebase.",
-            "error"
-        );
-
+        showToast("حدث خطأ أثناء حفظ الدعاء في Firebase.","error");
     }
 
 }
 
 
-/* =====================================================
-   DELETE DUA
-===================================================== */
+/* DELETE DUA */
 
 async function deleteDua(index){
 
-    if(!confirm(
-        "هل تريد حذف هذا الدعاء؟"
-    )){
-
+    if(!confirm("هل تريد حذف هذا الدعاء؟")){
         return;
-
     }
-
 
     try{
 
-        duas.splice(
-            index,
-            1
-        );
-
+        duas.splice(index,1);
 
         await saveDuasData();
 
-
         renderDuas();
 
-
-        showToast(
-            "تم حذف الدعاء بنجاح."
-        );
+        showToast("تم حذف الدعاء بنجاح.");
 
     }
 
     catch(error){
-
         console.error(error);
-
-        showToast(
-            "حدث خطأ أثناء حذف الدعاء.",
-            "error"
-        );
-
+        showToast("حدث خطأ أثناء حذف الدعاء.","error");
     }
 
 }
 
 
-/* =====================================================
-   ACCESS CODE
-===================================================== */
+/* ACCESS CODE */
 
 async function saveAccessCode(){
 
-    const code =
-    document.getElementById(
-        "accessCode"
-    ).value.trim();
-
+    const code = document.getElementById("accessCode").value.trim();
 
     if(!code){
-
-        showToast(
-            "اكتب كود الدخول أولًا.",
-            "error"
-        );
-
+        showToast("اكتب كود الدخول أولًا.","error");
         return;
-
     }
-
 
     try{
 
-        await db.ref(
-            "settings/accessCode"
-        ).set(code);
+        await db.ref("settings/accessCode").set(code);
 
+        showToast("تم حفظ كود الدخول بنجاح.");
+
+    }
+
+    catch(error){
+        console.error(error);
+        showToast("حدث خطأ أثناء حفظ كود الدخول.","error");
+    }
+
+}
+
+
+/* =====================================================
+   APP UPDATE (NEW)
+===================================================== */
+
+async function loadUpdate(){
+
+    try{
+
+        const snap = await db.ref("settings/appUpdate").once("value");
+
+        const d = snap.val() || {};
+
+        document.getElementById("updateUrl").value = d.url || "";
+
+        document.getElementById("updateText").value = d.text || "";
+
+        document.getElementById("updateEnabled").checked = !!d.enabled;
+
+    }
+
+    catch(error){
+        console.error(error);
+    }
+
+}
+
+
+async function saveUpdate(){
+
+    const url = document.getElementById("updateUrl").value.trim();
+
+    const text = document.getElementById("updateText").value.trim();
+
+    const enabled = document.getElementById("updateEnabled").checked;
+
+    const button = document.getElementById("updatePublishBtn");
+
+    if(enabled && !text){
+        showToast("اكتب نص التحديث أولًا.","error");
+        return;
+    }
+
+    if(enabled && !/^https?:\/\//i.test(url)){
+        showToast("الرابط لازم يبدأ بـ https://","error");
+        return;
+    }
+
+    button.disabled = true;
+
+    try{
+
+        const ref = db.ref("settings/appUpdate");
+
+        const versionSnap = await ref.child("version").once("value");
+
+        const version = (Number(versionSnap.val()) || 0) + 1;
+
+        await ref.set({
+            url:url,
+            text:text,
+            enabled:enabled,
+            version:version
+        });
 
         showToast(
-            "تم حفظ كود الدخول بنجاح."
+            enabled
+            ? "تم نشر التحديث وتفعيله."
+            : "تم حفظ التحديث (غير مفعّل)."
         );
 
     }
 
     catch(error){
-
         console.error(error);
+        showToast("حدث خطأ أثناء نشر التحديث.","error");
+    }
 
-        showToast(
-            "حدث خطأ أثناء حفظ كود الدخول.",
-            "error"
-        );
-
+    finally{
+        button.disabled = false;
     }
 
 }
 
 
-/* =====================================================
-   OPEN PAGE
-===================================================== */
+/* OPEN PAGE */
 
 function openPage(id,button){
 
-    document
-    .querySelectorAll(".page")
-    .forEach(function(page){
-
+    document.querySelectorAll(".page").forEach(function(page){
         page.classList.remove("active");
-
     });
 
+    document.getElementById(id).classList.add("active");
 
-    document
-    .getElementById(id)
-    .classList.add("active");
-
-
-    document
-    .querySelectorAll(".menu-item")
-    .forEach(function(item){
-
+    document.querySelectorAll(".menu-item").forEach(function(item){
         item.classList.remove("active");
-
     });
-
 
     button.classList.add("active");
 
-
     const titles = {
-
         home:"لوحة التحكم",
-
         series:"المسلسلات",
-
         episodes:"الحلقات",
-
         duas:"الأدعية",
-
-        access:"كود الدخول"
-
+        access:"كود الدخول",
+        update:"التحديث"
     };
 
+    document.getElementById("pageTitle").textContent = titles[id];
 
-    document
-    .getElementById("pageTitle")
-    .textContent =
-    titles[id];
+    document.getElementById("sidebar").classList.remove("open");
 
-
-    document
-    .getElementById("sidebar")
-    .classList
-    .remove("open");
-
-
-    document
-    .getElementById("mobileOverlay")
-    .classList
-    .remove("active");
+    document.getElementById("mobileOverlay").classList.remove("active");
 
 }
 
 
-/* =====================================================
-   CLOSE MODAL
-===================================================== */
+/* CLOSE MODAL */
 
 function closeModal(id){
 
-    document
-    .getElementById(id)
-    .classList
-    .remove("active");
-
+    document.getElementById(id).classList.remove("active");
 
     if(id === "manageEpisodesModal"){
 
         editingEpisodeIndex = null;
 
+        document.getElementById("episodeName").value = "";
 
-        document.getElementById(
-            "episodeName"
-        ).value = "";
-
-
-        document.getElementById(
-            "episodeLink"
-        ).value = "";
-
+        document.getElementById("episodeLink").value = "";
 
         setEpisodeAddMode();
 
@@ -5828,54 +2535,36 @@ function closeModal(id){
 }
 
 
-/* =====================================================
-   CLOSE ALL MODALS
-===================================================== */
+/* CLOSE ALL MODALS */
 
 function closeAllModals(){
 
-    document
-    .querySelectorAll(".modal.active")
-    .forEach(function(modal){
-
+    document.querySelectorAll(".modal.active").forEach(function(modal){
         modal.classList.remove("active");
-
     });
 
 }
 
 
-/* =====================================================
-   CLOSE OUTSIDE
-===================================================== */
+/* CLOSE OUTSIDE */
 
 function closeModalOutside(event,id){
 
     if(event.target.id === id){
-
         closeModal(id);
-
     }
 
 }
 
 
-/* =====================================================
-   ESC
-===================================================== */
+/* ESC */
 
-document.addEventListener(
-"keydown",
-function(event){
+document.addEventListener("keydown",function(event){
 
     if(event.key === "Escape"){
 
-        document
-        .querySelectorAll(".modal.active")
-        .forEach(function(modal){
-
+        document.querySelectorAll(".modal.active").forEach(function(modal){
             closeModal(modal.id);
-
         });
 
     }
@@ -5883,91 +2572,56 @@ function(event){
 });
 
 
-/* =====================================================
-   MOBILE MENU
-===================================================== */
+/* MOBILE MENU */
 
 function toggleMenu(){
 
-    document
-    .getElementById("sidebar")
-    .classList
-    .toggle("open");
+    document.getElementById("sidebar").classList.toggle("open");
 
-
-    document
-    .getElementById("mobileOverlay")
-    .classList
-    .toggle("active");
+    document.getElementById("mobileOverlay").classList.toggle("active");
 
 }
 
 
-/* =====================================================
-   SECURITY HELPERS
-===================================================== */
+/* SECURITY HELPERS */
 
 function escapeHTML(value){
 
     return String(value)
-
     .replace(/&/g,"&amp;")
-
     .replace(/</g,"&lt;")
-
     .replace(/>/g,"&gt;")
-
     .replace(/"/g,"&quot;")
-
     .replace(/'/g,"&#039;");
 
 }
 
-
 function escapeAttribute(value){
-
     return escapeHTML(value);
-
 }
 
 
-/* =====================================================
-   ENTER KEY LOGIN
-===================================================== */
+/* ENTER KEY LOGIN */
 
-document.addEventListener(
-"keydown",
-function(event){
+document.addEventListener("keydown",function(event){
 
     if(
         event.key === "Enter" &&
-        document.getElementById(
-            "loginScreen"
-        ).style.display !== "none"
+        document.getElementById("loginScreen").style.display !== "none"
     ){
-
         login();
-
     }
 
 });
 
 
-/* =====================================================
-   INITIAL PAGE
-===================================================== */
+/* INITIAL PAGE */
 
-document.addEventListener(
-"DOMContentLoaded",
-function(){
+document.addEventListener("DOMContentLoaded",function(){
 
-    document.getElementById(
-        "adminEmail"
-    ).value = "";
+    document.getElementById("adminEmail").value = "";
 
-    document.getElementById(
-        "adminPassword"
-    ).value = "";
+    document.getElementById("adminPassword").value = "";
 
 });
 
